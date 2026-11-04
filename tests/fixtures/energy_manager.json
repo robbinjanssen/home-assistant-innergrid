@@ -1,0 +1,89 @@
+{
+  "version": 5,
+  "timestamp": 1793803703,
+  "dateTime": "2026-11-04T15:48:23+01:00",
+  "ageInSeconds": 1,
+  "cycleNumber": 494328,
+  "energyManager": {
+    "id": 11376,
+    "name": "Energy Manager",
+    "isAbnormalCondition": false,
+    "isTemporaryOverLimitApplied": false,
+    "isSolarChargingOnly": false,
+    "powerValues": {
+      "gridActivePower": 9630,
+      "chargePointPower": 0,
+      "appliedFlexibleResourcePower": 0,
+      "previousPowerInstruction": 0,
+      "continuousActivePowerImportLimit": 57400,
+      "instantaneousActivePowerImportLimit": 70824,
+      "optimizedImportPower": 9244,
+      "peakShavingResourcePowerLimit": 61194,
+      "selfConsumptionResourcePowerLimit": -9630,
+      "optimalResourcePowerLimit": 0,
+      "batteryDischargeHeadroom": 0,
+      "batteryPower": 0,
+      "solarPower": -2570,
+      "inflexiblePower": 12199,
+      "solarCurtailmentHeadroom": 0,
+      "instantaneousActivePowerExportLimit": 40803,
+      "continuousActivePowerExportLimit": 31600,
+      "climatePower": 4713,
+      "baseloadPower": 7486
+    },
+    "powerConstraints": {
+      "normalCondition": {
+        "lowerLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        },
+        "upperLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        }
+      },
+      "abnormalCondition": {
+        "lowerLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        },
+        "upperLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        }
+      }
+    },
+    "powerEnvelope": {
+      "lowerLimit": 0,
+      "upperLimit": 0,
+      "optimalLimit": 0
+    },
+    "strategy": {
+      "optimizationGoal": "SCHEDULED_CHARGING",
+      "bindingLimit": "OPTIMAL_LIMIT",
+      "description": "Following the power schedule.",
+      "optimizationStrategy": {
+        "goal": "SCHEDULED_CHARGING",
+        "windowStart": "2026-11-04T15:48:23+01:00",
+        "windowEnd": "2026-11-04T16:33:23+01:00",
+        "currentSurplusPower": -9630,
+        "currentSolarPower": 2570,
+        "currentBatteryPower": 0,
+        "currentExportPrice": 0.25,
+        "baselinePrice": 0.3,
+        "flexibleEnergyNeed": 0,
+        "forecastSurplusEnergy": 0,
+        "cheaperFutureEnergy": 2.65,
+        "cheaperNegativePriceEnergy": 0,
+        "cheapestPeriodStart": "2026-11-04T16:00:00+01:00",
+        "cheapestPeriodPrice": 0.28,
+        "cheapestPeriodSource": "GRID",
+        "activeFlexibleResources": 1,
+        "scheduledFlexiblePower": 0,
+        "scheduledFlexibleGridPower": 0,
+        "coverageRatio": null,
+        "description": "Following the power schedule."
+      }
+    }
+  }
+}

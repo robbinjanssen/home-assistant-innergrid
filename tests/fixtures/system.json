@@ -1,0 +1,142 @@
+{
+  "systemUptimeSeconds": 864000,
+  "systemUptimeString": "10 days, 00:00",
+  "symconUptimeSeconds": 86400,
+  "symconUptimeString": "1 days, 00:00",
+  "symconVersion": "1.0 / 2026.01.01",
+  "moduleLibraryVersion": "1 / 2026.01.01",
+  "cpuUsage": 18,
+  "totalMemory": 16000,
+  "availableMemory": 8000,
+  "filesystemTotalSpace": 500000,
+  "filesystemFreeSpace": 250000,
+  "temperature": 0,
+  "inMaintenanceUntil": 0,
+  "dnsResolverStatus": 1,
+  "ioConnectionFaults": 1,
+  "lastBackupAt": 1793750400,
+  "backupFileCount": 100,
+  "backupStatus": 1,
+  "powerImport": 10000,
+  "powerConsumption": 14000,
+  "powerProduction": 4000,
+  "measurementReplicationRate": 331,
+  "replicationStatus": 1,
+  "nsqStatus": 2,
+  "apiTraffic": 1000000,
+  "apiRequestCount": 10000,
+  "instancesNotActive": 5,
+  "overdueTimers": 0,
+  "ingressPoints": 1000,
+  "platform": "",
+  "loggedQuantities": {
+    "systemUptimeSeconds": {
+      "name": "System uptime (s)",
+      "unit": "time.second"
+    },
+    "symconUptimeSeconds": {
+      "name": "Symcon uptime (s)",
+      "unit": "time.second"
+    },
+    "symconVersion": {
+      "name": "Symcon version",
+      "unit": "symconVersion.string"
+    },
+    "moduleLibraryVersion": {
+      "name": "Module library version",
+      "unit": "symconVersion.string"
+    },
+    "cpuUsage": {
+      "name": "CPU usage",
+      "unit": "cpuUsage.int"
+    },
+    "totalMemory": {
+      "name": "Total memory",
+      "unit": "dataSize.mebibyte.int"
+    },
+    "availableMemory": {
+      "name": "Available memory",
+      "unit": "dataSize.mebibyte.int"
+    },
+    "filesystemTotalSpace": {
+      "name": "Filesystem total space",
+      "unit": "dataSize.mebibyte.int"
+    },
+    "filesystemFreeSpace": {
+      "name": "Filesystem free space",
+      "unit": "dataSize.mebibyte.int"
+    },
+    "temperature": {
+      "name": "Temperature",
+      "unit": "temperature.degreeCelsius"
+    },
+    "inMaintenanceUntil": {
+      "name": "In maintenance until",
+      "unit": "~UnixTimestamp"
+    },
+    "dnsResolverStatus": {
+      "name": "DNS resolver",
+      "unit": "serviceReportStatus.int"
+    },
+    "ioConnectionFaults": {
+      "name": "I/O connection faults",
+      "unit": "faultCount.int"
+    },
+    "lastBackupAt": {
+      "name": "Last backup",
+      "unit": "~UnixTimestamp"
+    },
+    "backupFileCount": {
+      "name": "Backup file count",
+      "unit": "fileCount.int"
+    },
+    "backupStatus": {
+      "name": "Backups",
+      "unit": "serviceReportStatus.int"
+    },
+    "powerImport": {
+      "name": "Power import",
+      "unit": "power.watt.int"
+    },
+    "powerConsumption": {
+      "name": "Power consumption",
+      "unit": "power.watt.int"
+    },
+    "powerProduction": {
+      "name": "Power production",
+      "unit": "power.watt.int"
+    },
+    "measurementReplicationRate": {
+      "name": "Replication rate",
+      "unit": "throughput.pointsPerSecond"
+    },
+    "replicationStatus": {
+      "name": "Replication",
+      "unit": "serviceReportStatus.int"
+    },
+    "nsqStatus": {
+      "name": "NSQ",
+      "unit": "serviceReportStatus.int"
+    },
+    "apiTraffic": {
+      "name": "API traffic",
+      "unit": "dataSize.kibibyte.int"
+    },
+    "apiRequestCount": {
+      "name": "API requests served",
+      "unit": "number"
+    },
+    "instancesNotActive": {
+      "name": "Instances not active",
+      "unit": "number"
+    },
+    "overdueTimers": {
+      "name": "Overdue timers",
+      "unit": "number"
+    },
+    "ingressPoints": {
+      "name": "Data points stored (5 minutes)",
+      "unit": "number"
+    }
+  }
+}

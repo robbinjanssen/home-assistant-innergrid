@@ -1,0 +1,19 @@
+{
+  "name": "sessionchanged",
+  "time": "2026-11-04T17:38:44+01:00",
+  "payload": {
+    "session": {
+      "chargingState": "CHARGING",
+      "status": "THROTTLED_BY_EV",
+      "chargeStrategy": "SMART_CHARGING",
+      "minimumPower": 4200,
+      "targetEnergyRequest": 40,
+      "departureAt": "2026-11-04T15:00:00Z",
+      "sessionId": 10,
+      "startedAt": "2026-11-04T08:04:56Z",
+      "finishedAt": "2026-10-23T14:44:34Z",
+      "username": "Alice",
+      "isClaimed": false
+    }
+  }
+}

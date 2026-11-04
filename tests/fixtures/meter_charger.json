@@ -1,0 +1,156 @@
+{
+  "id": 30753,
+  "moduleName": "Zaptec Meter",
+  "name": "Lader 02",
+  "location": "Energiemeters\\Lader 02",
+  "circuitId": 11212,
+  "isThreePhase": true,
+  "current": 0,
+  "activePower": 0,
+  "energyImported": 888.31,
+  "energyExported": 0,
+  "measurements": {
+    "energyImported": 888.312,
+    "energyExported": 0,
+    "current": 0,
+    "activePower": 0,
+    "warnings": 0,
+    "energyImportedL1": 0,
+    "energyImportedL2": 0,
+    "energyImportedL3": 0,
+    "energyExportedL1": 0,
+    "energyExportedL2": 0,
+    "energyExportedL3": 0,
+    "voltageL1": 224.7,
+    "voltageL2": 224.1,
+    "voltageL3": 224.4,
+    "currentL1": 0.12,
+    "currentL2": 0.11,
+    "currentL3": 0.12,
+    "maximumCurrentL1": 0,
+    "maximumCurrentL2": 0,
+    "maximumCurrentL3": 0,
+    "activePowerL1": 0,
+    "activePowerL2": 0,
+    "activePowerL3": 0,
+    "energyChargedInCurrentSession": 40.529,
+    "contactorVoltageL1": 0.085,
+    "contactorVoltageL2": 0.0857,
+    "contactorVoltageL3": 0.1074,
+    "chargerVersusGridVoltageRatio": 0.99
+  },
+  "loggedQuantities": {
+    "energyImported": {
+      "name": "Energy imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExported": {
+      "name": "Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "current": {
+      "name": "Current",
+      "unit": "current.ampere"
+    },
+    "activePower": {
+      "name": "Active power",
+      "unit": "power.watt"
+    },
+    "warnings": {
+      "name": "Warnings",
+      "unit": "bitmask.int"
+    },
+    "energyImportedL1": {
+      "name": "L1 Energy Imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyImportedL2": {
+      "name": "L2 Energy Imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyImportedL3": {
+      "name": "L3 Energy Imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExportedL1": {
+      "name": "L1 Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExportedL2": {
+      "name": "L2 Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExportedL3": {
+      "name": "L3 Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "voltageL1": {
+      "name": "L1 Voltage",
+      "unit": "voltage.volt"
+    },
+    "voltageL2": {
+      "name": "L2 Voltage",
+      "unit": "voltage.volt"
+    },
+    "voltageL3": {
+      "name": "L3 Voltage",
+      "unit": "voltage.volt"
+    },
+    "currentL1": {
+      "name": "L1 Current",
+      "unit": "current.ampere"
+    },
+    "currentL2": {
+      "name": "L2 Current",
+      "unit": "current.ampere"
+    },
+    "currentL3": {
+      "name": "L3 Current",
+      "unit": "current.ampere"
+    },
+    "maximumCurrentL1": {
+      "name": "L1 Maximum Current",
+      "unit": "current.ampere"
+    },
+    "maximumCurrentL2": {
+      "name": "L2 Maximum Current",
+      "unit": "current.ampere"
+    },
+    "maximumCurrentL3": {
+      "name": "L3 Maximum Current",
+      "unit": "current.ampere"
+    },
+    "activePowerL1": {
+      "name": "L1 Active power",
+      "unit": "power.watt"
+    },
+    "activePowerL2": {
+      "name": "L2 Active power",
+      "unit": "power.watt"
+    },
+    "activePowerL3": {
+      "name": "L3 Active power",
+      "unit": "power.watt"
+    },
+    "energyChargedInCurrentSession": {
+      "name": "Energy charged in current session",
+      "unit": "energy.kiloWattHour"
+    },
+    "contactorVoltageL1": {
+      "name": "L1 Contactor voltage",
+      "unit": "voltage.volt"
+    },
+    "contactorVoltageL2": {
+      "name": "L2 Contactor voltage",
+      "unit": "voltage.volt"
+    },
+    "contactorVoltageL3": {
+      "name": "L1 Contactor voltage",
+      "unit": "voltage.volt"
+    },
+    "chargerVersusGridVoltageRatio": {
+      "name": "Charger vs grid voltage ratio",
+      "unit": "ratio.float"
+    }
+  }
+}

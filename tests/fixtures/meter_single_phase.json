@@ -1,0 +1,106 @@
+{
+  "id": 10005,
+  "moduleName": "Eastron SDM630MCTML 1P",
+  "name": "Groep 14",
+  "location": "Energiemeters\\Groep 14",
+  "circuitId": 32128,
+  "isThreePhase": false,
+  "current": 0.14,
+  "activePower": -22,
+  "energyImported": 8.07,
+  "energyExported": 1135.16,
+  "measurements": {
+    "energyImported": 8.073,
+    "energyExported": 1135.159,
+    "current": 0.14,
+    "activePower": -22,
+    "warnings": 0,
+    "voltage": 226.8,
+    "currentNeutral": 0,
+    "apparentPower": 31,
+    "reactivePower": -21.8,
+    "powerFactor": -0.71,
+    "frequency": 49.99,
+    "reactiveEnergyImported": 5.267,
+    "reactiveEnergyExported": 1136.643,
+    "totalHarmonicVoltageDistortion": 1.2,
+    "totalHarmonicCurrentDistortion": 21.7,
+    "phaseAngle": -134.6,
+    "maximumCurrent": 3.01,
+    "currentTransformerPrimaryCurrentRange": 5
+  },
+  "loggedQuantities": {
+    "energyImported": {
+      "name": "Energy imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExported": {
+      "name": "Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "current": {
+      "name": "Current",
+      "unit": "current.ampere"
+    },
+    "activePower": {
+      "name": "Active power",
+      "unit": "power.watt"
+    },
+    "warnings": {
+      "name": "Warnings",
+      "unit": "bitmask.int"
+    },
+    "voltage": {
+      "name": "Voltage",
+      "unit": "voltage.volt"
+    },
+    "currentNeutral": {
+      "name": "Neutral current",
+      "unit": "current.ampere"
+    },
+    "apparentPower": {
+      "name": "Apparent power",
+      "unit": "apparentPower.voltAmpere"
+    },
+    "reactivePower": {
+      "name": "Reactive power",
+      "unit": "reactivePower.voltAmpsReactive"
+    },
+    "powerFactor": {
+      "name": "Power factor",
+      "unit": "powerFactor"
+    },
+    "frequency": {
+      "name": "Frequency",
+      "unit": "frequency.hertz"
+    },
+    "reactiveEnergyImported": {
+      "name": "Reactive energy imported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "reactiveEnergyExported": {
+      "name": "Reactive energy exported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "totalHarmonicVoltageDistortion": {
+      "name": "Total harmonic voltage distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "totalHarmonicCurrentDistortion": {
+      "name": "Total harmonic current distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "phaseAngle": {
+      "name": "Phase angle",
+      "unit": "angle.degree"
+    },
+    "maximumCurrent": {
+      "name": "Maximum current",
+      "unit": "current.ampere"
+    },
+    "currentTransformerPrimaryCurrentRange": {
+      "name": "CT primary current range",
+      "unit": "currentTransformerPrimaryCurrentRange.ampere"
+    }
+  }
+}

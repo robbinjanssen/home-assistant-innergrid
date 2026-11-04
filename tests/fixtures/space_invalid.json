@@ -1,0 +1,57 @@
+{
+  "id": 11468,
+  "values": {
+    "temperature": {
+      "value": -1001.1,
+      "updatedAt": "2026-11-04T15:33:53+01:00",
+      "isStale": false
+    },
+    "relativeHumidity": {
+      "value": 0,
+      "updatedAt": "2026-11-04T15:38:53+01:00",
+      "isStale": false
+    },
+    "co2Concentration": {
+      "value": 409,
+      "updatedAt": "2026-11-04T15:38:53+01:00",
+      "isStale": false
+    },
+    "illuminance": {
+      "value": 2,
+      "updatedAt": "2026-11-04T15:38:53+01:00",
+      "isStale": false
+    },
+    "presence": {
+      "value": null,
+      "updatedAt": null,
+      "isStale": false
+    },
+    "occupancy": {
+      "value": null,
+      "updatedAt": null,
+      "isStale": false
+    },
+    "airQuality": {
+      "value": 0,
+      "updatedAt": "2026-11-04T15:38:53+01:00",
+      "isStale": false,
+      "label": "good"
+    }
+  },
+  "climate": null,
+  "lowBatteryCount": 1,
+  "conditions": [
+    {
+      "name": "HUMIDITY_LOW",
+      "label": "Too dry",
+      "severity": "warning"
+    },
+    {
+      "name": "BATTERY_LOW",
+      "label": "Battery low",
+      "severity": "info"
+    }
+  ],
+  "lighting": null,
+  "lightingMaster": null
+}

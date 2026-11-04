@@ -1,0 +1,316 @@
+{
+  "id": 37373,
+  "moduleName": "Eastron SDM630MCTML",
+  "name": "Groep 15",
+  "location": "Energiemeters\\Groep 15",
+  "circuitId": 19923,
+  "isThreePhase": true,
+  "current": 0.058,
+  "activePower": 6,
+  "energyImported": 38500.84,
+  "energyExported": 7.76,
+  "measurements": {
+    "energyImported": 38500.836,
+    "energyExported": 7.761,
+    "current": 0.058,
+    "activePower": 6,
+    "warnings": 0,
+    "energyImportedL1": 13663.977,
+    "energyImportedL2": 13535.941,
+    "energyImportedL3": 11300.917,
+    "energyExportedL1": 1.496,
+    "energyExportedL2": 0.146,
+    "energyExportedL3": 6.119,
+    "voltageL1": 227,
+    "voltageL2": 226.4,
+    "voltageL3": 227.1,
+    "currentL1": 0.058,
+    "currentL2": 0,
+    "currentL3": 0,
+    "maximumCurrentL1": 31.99,
+    "maximumCurrentL2": 32.07,
+    "maximumCurrentL3": 32.2,
+    "activePowerL1": 6,
+    "activePowerL2": 0,
+    "activePowerL3": 0,
+    "currentNeutral": 0.058,
+    "apparentPower": 7.45,
+    "reactivePower": -4.12,
+    "powerFactor": 0.83,
+    "frequency": 49.99,
+    "reactiveEnergyImported": 27.039,
+    "reactiveEnergyExported": 3617.2,
+    "totalHarmonicVoltageDistortion": 1.2,
+    "totalHarmonicCurrentDistortion": 32.1,
+    "reactiveEnergyImportedL1": 0.073,
+    "reactiveEnergyImportedL2": 22.534,
+    "reactiveEnergyImportedL3": 4.432,
+    "reactiveEnergyExportedL1": 1385.862,
+    "reactiveEnergyExportedL2": 1146.038,
+    "reactiveEnergyExportedL3": 1085.3,
+    "apparentPowerL1": 7.42,
+    "apparentPowerL2": 0,
+    "apparentPowerL3": 0,
+    "reactivePowerL1": -4.12,
+    "reactivePowerL2": 0,
+    "reactivePowerL3": 0,
+    "powerFactorL1": 0.84,
+    "powerFactorL2": 0,
+    "powerFactorL3": 0,
+    "phaseAngleL1": -28.5,
+    "phaseAngleL2": 0,
+    "phaseAngleL3": 0,
+    "phaseAngle": -33.6,
+    "totalHarmonicVoltageDistortionL1": 1.1,
+    "totalHarmonicVoltageDistortionL2": 1.1,
+    "totalHarmonicVoltageDistortionL3": 1.2,
+    "totalHarmonicCurrentDistortionL1": 96.3,
+    "totalHarmonicCurrentDistortionL2": 0,
+    "totalHarmonicCurrentDistortionL3": 0,
+    "currentTransformerPrimaryCurrentRangeL1": 50,
+    "currentTransformerPrimaryCurrentRangeL2": 50,
+    "currentTransformerPrimaryCurrentRangeL3": 50
+  },
+  "loggedQuantities": {
+    "energyImported": {
+      "name": "Energy imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExported": {
+      "name": "Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "current": {
+      "name": "Current",
+      "unit": "current.ampere"
+    },
+    "activePower": {
+      "name": "Active power",
+      "unit": "power.watt"
+    },
+    "warnings": {
+      "name": "Warnings",
+      "unit": "bitmask.int"
+    },
+    "energyImportedL1": {
+      "name": "L1 Energy Imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyImportedL2": {
+      "name": "L2 Energy Imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyImportedL3": {
+      "name": "L3 Energy Imported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExportedL1": {
+      "name": "L1 Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExportedL2": {
+      "name": "L2 Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "energyExportedL3": {
+      "name": "L3 Energy exported",
+      "unit": "energy.kiloWattHour"
+    },
+    "voltageL1": {
+      "name": "L1 Voltage",
+      "unit": "voltage.volt"
+    },
+    "voltageL2": {
+      "name": "L2 Voltage",
+      "unit": "voltage.volt"
+    },
+    "voltageL3": {
+      "name": "L3 Voltage",
+      "unit": "voltage.volt"
+    },
+    "currentL1": {
+      "name": "L1 Current",
+      "unit": "current.ampere"
+    },
+    "currentL2": {
+      "name": "L2 Current",
+      "unit": "current.ampere"
+    },
+    "currentL3": {
+      "name": "L3 Current",
+      "unit": "current.ampere"
+    },
+    "maximumCurrentL1": {
+      "name": "L1 Maximum Current",
+      "unit": "current.ampere"
+    },
+    "maximumCurrentL2": {
+      "name": "L2 Maximum Current",
+      "unit": "current.ampere"
+    },
+    "maximumCurrentL3": {
+      "name": "L3 Maximum Current",
+      "unit": "current.ampere"
+    },
+    "activePowerL1": {
+      "name": "L1 Active power",
+      "unit": "power.watt"
+    },
+    "activePowerL2": {
+      "name": "L2 Active power",
+      "unit": "power.watt"
+    },
+    "activePowerL3": {
+      "name": "L3 Active power",
+      "unit": "power.watt"
+    },
+    "currentNeutral": {
+      "name": "Neutral current",
+      "unit": "current.ampere"
+    },
+    "apparentPower": {
+      "name": "Apparent power",
+      "unit": "apparentPower.voltAmpere"
+    },
+    "reactivePower": {
+      "name": "Reactive power",
+      "unit": "reactivePower.voltAmpsReactive"
+    },
+    "powerFactor": {
+      "name": "Power factor",
+      "unit": "powerFactor"
+    },
+    "frequency": {
+      "name": "Frequency",
+      "unit": "frequency.hertz"
+    },
+    "reactiveEnergyImported": {
+      "name": "Reactive energy imported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "reactiveEnergyExported": {
+      "name": "Reactive energy exported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "totalHarmonicVoltageDistortion": {
+      "name": "Total harmonic voltage distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "totalHarmonicCurrentDistortion": {
+      "name": "Total harmonic current distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "reactiveEnergyImportedL1": {
+      "name": "L1 Reactive energy imported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "reactiveEnergyImportedL2": {
+      "name": "L2 Reactive energy imported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "reactiveEnergyImportedL3": {
+      "name": "L3 Reactive energy imported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "reactiveEnergyExportedL1": {
+      "name": "L1 Reactive energy exported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "reactiveEnergyExportedL2": {
+      "name": "L2 Reactive energy exported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "reactiveEnergyExportedL3": {
+      "name": "L3 Reactive energy exported",
+      "unit": "reactiveEnergy.kiloVoltAmpereReactiveHour"
+    },
+    "apparentPowerL1": {
+      "name": "L1 Apparent power",
+      "unit": "apparentPower.voltAmpere"
+    },
+    "apparentPowerL2": {
+      "name": "L2 Apparent power",
+      "unit": "apparentPower.voltAmpere"
+    },
+    "apparentPowerL3": {
+      "name": "L3 Apparent power",
+      "unit": "apparentPower.voltAmpere"
+    },
+    "reactivePowerL1": {
+      "name": "L1 Reactive power",
+      "unit": "reactivePower.voltAmpsReactive"
+    },
+    "reactivePowerL2": {
+      "name": "L2 Reactive power",
+      "unit": "reactivePower.voltAmpsReactive"
+    },
+    "reactivePowerL3": {
+      "name": "L3 Reactive power",
+      "unit": "reactivePower.voltAmpsReactive"
+    },
+    "powerFactorL1": {
+      "name": "L1 Power factor",
+      "unit": "powerFactor"
+    },
+    "powerFactorL2": {
+      "name": "L2 Power factor",
+      "unit": "powerFactor"
+    },
+    "powerFactorL3": {
+      "name": "L3 Power factor",
+      "unit": "powerFactor"
+    },
+    "phaseAngleL1": {
+      "name": "L1 Phase angle",
+      "unit": "angle.degree"
+    },
+    "phaseAngleL2": {
+      "name": "L2 Phase angle",
+      "unit": "angle.degree"
+    },
+    "phaseAngleL3": {
+      "name": "L3 Phase angle",
+      "unit": "angle.degree"
+    },
+    "phaseAngle": {
+      "name": "Phase angle",
+      "unit": "angle.degree"
+    },
+    "totalHarmonicVoltageDistortionL1": {
+      "name": "L1 Total harmonic voltage distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "totalHarmonicVoltageDistortionL2": {
+      "name": "L2 Total harmonic voltage distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "totalHarmonicVoltageDistortionL3": {
+      "name": "L3 Total harmonic voltage distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "totalHarmonicCurrentDistortionL1": {
+      "name": "L1 Total harmonic current distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "totalHarmonicCurrentDistortionL2": {
+      "name": "L2 Total harmonic current distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "totalHarmonicCurrentDistortionL3": {
+      "name": "L3 Total harmonic current distortion",
+      "unit": "totalHarmonicDistortion.percentage"
+    },
+    "currentTransformerPrimaryCurrentRangeL1": {
+      "name": "L1 CT primary current range",
+      "unit": "currentTransformerPrimaryCurrentRange.ampere"
+    },
+    "currentTransformerPrimaryCurrentRangeL2": {
+      "name": "L2 CT primary current range",
+      "unit": "currentTransformerPrimaryCurrentRange.ampere"
+    },
+    "currentTransformerPrimaryCurrentRangeL3": {
+      "name": "L3 CT primary current range",
+      "unit": "currentTransformerPrimaryCurrentRange.ampere"
+    }
+  }
+}

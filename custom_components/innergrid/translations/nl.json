@@ -1,0 +1,505 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Verbinden met de MQTT-broker",
+                "description": "De verbinding wordt gecontroleerd door maximaal 30 seconden te wachten op een bericht onder de topic-prefix.",
+                "data": {
+                    "host": "Host",
+                    "port": "Poort",
+                    "username": "Gebruikersnaam",
+                    "password": "Wachtwoord",
+                    "topic_prefix": "Topic-prefix"
+                },
+                "data_description": {
+                    "host": "De MQTT-broker van Innergrid die de energiegegevens publiceert.",
+                    "username": "Laat leeg als de broker geen inlog vereist.",
+                    "topic_prefix": "Het eerste deel van de topics: je customer site, bijvoorbeeld mysite in mysite/system."
+                }
+            },
+            "reconfigure": {
+                "title": "Verbinden met de MQTT-broker",
+                "description": "De verbinding wordt gecontroleerd door maximaal 30 seconden te wachten op een bericht onder de topic-prefix.",
+                "data": {
+                    "host": "Host",
+                    "port": "Poort",
+                    "username": "Gebruikersnaam",
+                    "password": "Wachtwoord",
+                    "topic_prefix": "Topic-prefix"
+                },
+                "data_description": {
+                    "host": "De MQTT-broker van Innergrid die de energiegegevens publiceert.",
+                    "username": "Laat leeg als de broker geen inlog vereist.",
+                    "topic_prefix": "Het eerste deel van de topics: je customer site, bijvoorbeeld mysite in mysite/system."
+                }
+            },
+            "reauth_confirm": {
+                "title": "Vul de inlog van de MQTT-broker in",
+                "description": "De MQTT-broker {host} weigerde de gebruikersnaam of het wachtwoord.",
+                "data": {
+                    "username": "Gebruikersnaam",
+                    "password": "Wachtwoord"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Verbinden met de MQTT-broker is mislukt.",
+            "invalid_auth": "De MQTT-broker weigerde de gebruikersnaam of het wachtwoord.",
+            "no_messages": "Verbonden, maar binnen 30 seconden kwamen er geen berichten onder de topic-prefix binnen. Controleer de prefix.",
+            "invalid_topic_prefix": "Vul een topic-prefix in zonder de wildcards # en +."
+        },
+        "abort": {
+            "already_configured": "Deze broker en topic-prefix zijn al ingesteld.",
+            "reconfigure_successful": "De instellingen zijn gewijzigd.",
+            "reauth_successful": "De inlog is gewijzigd."
+        }
+    },
+    "device": {
+        "site": {
+            "name": "Locatie"
+        },
+        "space": {
+            "name": "Ruimte {id}"
+        },
+        "system": {
+            "name": "Symcon-server"
+        },
+        "milesight": {
+            "name": "Milesight {eui}"
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "abnormal_condition": {
+                "name": "Afwijkende situatie"
+            },
+            "temporary_over_limit_applied": {
+                "name": "Tijdelijk boven limiet"
+            },
+            "solar_charging_only": {
+                "name": "Alleen laden op zon"
+            }
+        },
+        "event": {
+            "session": {
+                "name": "Laadsessie",
+                "state_attributes": {
+                    "event_type": {
+                        "state": {
+                            "session_changed": "Sessie gewijzigd"
+                        }
+                    }
+                }
+            }
+        },
+        "sensor": {
+            "grid_power": {
+                "name": "Vermogen hoofdaansluiting"
+            },
+            "grid_energy_imported_24h": {
+                "name": "Afgenomen energie (24 uur)"
+            },
+            "grid_energy_exported_24h": {
+                "name": "Teruggeleverde energie (24 uur)"
+            },
+            "grid_peak_import": {
+                "name": "Hoogste kwartiervermogen afname"
+            },
+            "grid_peak_export": {
+                "name": "Hoogste kwartiervermogen teruglevering"
+            },
+            "grid_import_limit": {
+                "name": "Afnamelimiet aansluiting"
+            },
+            "grid_export_limit": {
+                "name": "Terugleverlimiet aansluiting"
+            },
+            "production_power": {
+                "name": "Vermogen productie"
+            },
+            "production_energy_24h": {
+                "name": "Geproduceerde energie (24 uur)"
+            },
+            "production_peak": {
+                "name": "Hoogste kwartiervermogen productie"
+            },
+            "consumption_power": {
+                "name": "Vermogen verbruik"
+            },
+            "consumption_energy_24h": {
+                "name": "Verbruikte energie (24 uur)"
+            },
+            "consumption_peak": {
+                "name": "Hoogste kwartiervermogen verbruik"
+            },
+            "battery_power": {
+                "name": "Vermogen batterij"
+            },
+            "grid_energy_imported_total": {
+                "name": "Afgenomen energie totaal"
+            },
+            "grid_energy_exported_total": {
+                "name": "Teruggeleverde energie totaal"
+            },
+            "production_energy_total": {
+                "name": "Geproduceerde energie totaal"
+            },
+            "consumption_energy_total": {
+                "name": "Verbruikte energie totaal"
+            },
+            "expense_24h": {
+                "name": "Kosten (24 uur)"
+            },
+            "revenue_24h": {
+                "name": "Opbrengst (24 uur)"
+            },
+            "energy_price_import": {
+                "name": "Energieprijs afname"
+            },
+            "energy_price_export": {
+                "name": "Energieprijs teruglevering"
+            },
+            "main_circuit_load": {
+                "name": "Belasting hoofdaansluiting"
+            },
+            "power": {
+                "name": "Vermogen"
+            },
+            "category_energy_imported_24h": {
+                "name": "Afgenomen energie (24 uur)"
+            },
+            "category_energy_exported_24h": {
+                "name": "Teruggeleverde energie (24 uur)"
+            },
+            "circuit_current": {
+                "name": "Stroom groep {phase}"
+            },
+            "circuit_load": {
+                "name": "Belasting groep ({minutes} min)"
+            },
+            "circuit_average_power_import": {
+                "name": "Gemiddeld vermogen afname (15 min)"
+            },
+            "circuit_average_power_export": {
+                "name": "Gemiddeld vermogen teruglevering (15 min)"
+            },
+            "circuit_current_limit": {
+                "name": "Stroomlimiet groep"
+            },
+            "circuit_warnings": {
+                "name": "Waarschuwingen groep"
+            },
+            "status": {
+                "name": "Status",
+                "state": {
+                    "available": "Beschikbaar",
+                    "preparing": "Voorbereiden",
+                    "charging": "Laden",
+                    "suspended_by_ev": "Gepauzeerd door auto",
+                    "throttled_by_ev": "Begrensd door auto",
+                    "suspended_by_evse": "Gepauzeerd door lader",
+                    "finishing": "Afronden",
+                    "reserved": "Gereserveerd",
+                    "unavailable": "Niet beschikbaar",
+                    "faulted": "Storing"
+                }
+            },
+            "charging_state": {
+                "name": "Laadstatus",
+                "state": {
+                    "idle": "Inactief",
+                    "charging": "Laden",
+                    "suspended_ev": "Gepauzeerd door auto",
+                    "suspended_evse": "Gepauzeerd door lader"
+                }
+            },
+            "charge_strategy": {
+                "name": "Laadstrategie",
+                "state": {
+                    "smart_charging": "Slim laden",
+                    "direct_charging": "Direct laden"
+                }
+            },
+            "charging_power": {
+                "name": "Laadvermogen"
+            },
+            "session_energy": {
+                "name": "Energie laadsessie"
+            },
+            "target_energy": {
+                "name": "Gevraagde energie"
+            },
+            "departure": {
+                "name": "Vertrektijd"
+            },
+            "session_start": {
+                "name": "Start laadsessie"
+            },
+            "session_end": {
+                "name": "Einde laadsessie"
+            },
+            "user": {
+                "name": "Gebruiker"
+            },
+            "charge_current": {
+                "name": "Laadstroom"
+            },
+            "phases_enabled": {
+                "name": "Fases"
+            },
+            "power_instruction": {
+                "name": "Vermogensinstructie"
+            },
+            "minimum_power": {
+                "name": "Minimaal vermogen"
+            },
+            "manager_grid_power": {
+                "name": "Vermogen net"
+            },
+            "manager_solar_power": {
+                "name": "Vermogen zon"
+            },
+            "manager_charge_point_power": {
+                "name": "Vermogen laadpunten"
+            },
+            "manager_climate_power": {
+                "name": "Vermogen klimaat"
+            },
+            "manager_baseload_power": {
+                "name": "Vermogen basislast"
+            },
+            "manager_inflexible_power": {
+                "name": "Vermogen niet-flexibel"
+            },
+            "manager_battery_power": {
+                "name": "Vermogen batterij"
+            },
+            "manager_optimized_import_power": {
+                "name": "Geoptimaliseerd afnamevermogen"
+            },
+            "manager_flexible_power": {
+                "name": "Vermogen flexibel"
+            },
+            "manager_continuous_import_limit": {
+                "name": "Continue afnamelimiet"
+            },
+            "manager_instantaneous_import_limit": {
+                "name": "Momentane afnamelimiet"
+            },
+            "manager_continuous_export_limit": {
+                "name": "Continue terugleverlimiet"
+            },
+            "manager_instantaneous_export_limit": {
+                "name": "Momentane terugleverlimiet"
+            },
+            "manager_peak_shaving_limit": {
+                "name": "Limiet piekafvlakking"
+            },
+            "optimization_goal": {
+                "name": "Optimalisatiedoel",
+                "state": {
+                    "scheduled_charging": "Gepland laden"
+                }
+            },
+            "binding_limit": {
+                "name": "Bepalende limiet",
+                "state": {
+                    "optimal_limit": "Optimale limiet",
+                    "resource_minimum": "Minimum van een apparaat"
+                }
+            },
+            "strategy": {
+                "name": "Strategie"
+            },
+            "cheapest_period_start": {
+                "name": "Start goedkoopste periode"
+            },
+            "cheapest_period_price": {
+                "name": "Prijs goedkoopste periode"
+            },
+            "baseline_price": {
+                "name": "Referentieprijs"
+            },
+            "air_quality": {
+                "name": "Luchtkwaliteit",
+                "state": {
+                    "good": "Goed"
+                }
+            },
+            "low_battery_count": {
+                "name": "Sensoren met lege batterij"
+            },
+            "battery_voltage": {
+                "name": "Batterijspanning"
+            },
+            "cpu_usage": {
+                "name": "CPU-gebruik"
+            },
+            "memory_available": {
+                "name": "Beschikbaar geheugen"
+            },
+            "memory_total": {
+                "name": "Totaal geheugen"
+            },
+            "disk_free": {
+                "name": "Vrije schijfruimte"
+            },
+            "disk_total": {
+                "name": "Totale schijfruimte"
+            },
+            "last_backup": {
+                "name": "Laatste back-up"
+            },
+            "system_started": {
+                "name": "Systeem gestart"
+            },
+            "symcon_started": {
+                "name": "Symcon gestart"
+            },
+            "module_library_version": {
+                "name": "Versie modulebibliotheek"
+            },
+            "io_connection_faults": {
+                "name": "Fouten I/O-verbindingen"
+            },
+            "instances_not_active": {
+                "name": "Inactieve instanties"
+            },
+            "overdue_timers": {
+                "name": "Achterlopende timers"
+            },
+            "backup_file_count": {
+                "name": "Back-upbestanden"
+            },
+            "api_request_count": {
+                "name": "API-verzoeken"
+            },
+            "active_power": {
+                "name": "Werkelijk vermogen"
+            },
+            "active_power_phase": {
+                "name": "{phase} werkelijk vermogen"
+            },
+            "apparent_power": {
+                "name": "Schijnbaar vermogen"
+            },
+            "apparent_power_phase": {
+                "name": "{phase} schijnbaar vermogen"
+            },
+            "charger_versus_grid_voltage_ratio": {
+                "name": "Spanningsverhouding lader/net"
+            },
+            "charger_versus_grid_voltage_ratio_phase": {
+                "name": "{phase} spanningsverhouding lader/net"
+            },
+            "contactor_voltage": {
+                "name": "Spanning schakelaar"
+            },
+            "contactor_voltage_phase": {
+                "name": "{phase} spanning schakelaar"
+            },
+            "current": {
+                "name": "Stroom"
+            },
+            "current_phase": {
+                "name": "{phase} stroom"
+            },
+            "current_neutral": {
+                "name": "Stroom nulleider"
+            },
+            "current_neutral_phase": {
+                "name": "{phase} stroom nulleider"
+            },
+            "current_transformer_primary_current_range": {
+                "name": "Primair bereik stroomtransformator"
+            },
+            "current_transformer_primary_current_range_phase": {
+                "name": "{phase} primair bereik stroomtransformator"
+            },
+            "energy_charged_in_current_session": {
+                "name": "Geladen energie huidige sessie"
+            },
+            "energy_charged_in_current_session_phase": {
+                "name": "{phase} geladen energie huidige sessie"
+            },
+            "energy_exported": {
+                "name": "Teruggeleverde energie"
+            },
+            "energy_exported_phase": {
+                "name": "{phase} teruggeleverde energie"
+            },
+            "energy_imported": {
+                "name": "Afgenomen energie"
+            },
+            "energy_imported_phase": {
+                "name": "{phase} afgenomen energie"
+            },
+            "frequency": {
+                "name": "Frequentie"
+            },
+            "frequency_phase": {
+                "name": "{phase} frequentie"
+            },
+            "maximum_current": {
+                "name": "Maximale stroom"
+            },
+            "maximum_current_phase": {
+                "name": "{phase} maximale stroom"
+            },
+            "phase_angle": {
+                "name": "Fasehoek"
+            },
+            "phase_angle_phase": {
+                "name": "{phase} fasehoek"
+            },
+            "power_factor": {
+                "name": "Arbeidsfactor"
+            },
+            "power_factor_phase": {
+                "name": "{phase} arbeidsfactor"
+            },
+            "reactive_energy_exported": {
+                "name": "Teruggeleverde blindenergie"
+            },
+            "reactive_energy_exported_phase": {
+                "name": "{phase} teruggeleverde blindenergie"
+            },
+            "reactive_energy_imported": {
+                "name": "Afgenomen blindenergie"
+            },
+            "reactive_energy_imported_phase": {
+                "name": "{phase} afgenomen blindenergie"
+            },
+            "reactive_power": {
+                "name": "Blindvermogen"
+            },
+            "reactive_power_phase": {
+                "name": "{phase} blindvermogen"
+            },
+            "total_harmonic_current_distortion": {
+                "name": "Harmonische stroomvervorming"
+            },
+            "total_harmonic_current_distortion_phase": {
+                "name": "{phase} harmonische stroomvervorming"
+            },
+            "total_harmonic_voltage_distortion": {
+                "name": "Harmonische spanningsvervorming"
+            },
+            "total_harmonic_voltage_distortion_phase": {
+                "name": "{phase} harmonische spanningsvervorming"
+            },
+            "voltage": {
+                "name": "Spanning"
+            },
+            "voltage_phase": {
+                "name": "{phase} spanning"
+            },
+            "warnings": {
+                "name": "Waarschuwingen"
+            },
+            "warnings_phase": {
+                "name": "{phase} waarschuwingen"
+            }
+        }
+    }
+}

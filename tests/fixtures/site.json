@@ -1,0 +1,104 @@
+{
+  "id": 34901,
+  "electricityMeters": {
+    "main": {
+      "id": 14402,
+      "name": "Hoofdaansluiting",
+      "activePower": 10802,
+      "energyImported24h": 305.93,
+      "energyExported24h": 1.1,
+      "maxActivePowerQuarterHourImport": 47299,
+      "maxActivePowerQuarterHourExport": 2301,
+      "continuousActivePowerImportLimit": 50000,
+      "continuousActivePowerExportLimit": 30000
+    },
+    "production": {
+      "id": 52115,
+      "name": "Omvormers",
+      "activePower": -3200,
+      "energyExported24h": 90.1,
+      "maxActivePowerQuarterHourExport": 20877
+    },
+    "consumption": {
+      "id": 32859,
+      "name": "Verbruik",
+      "activePower": 12038,
+      "energyImported24h": 394.95,
+      "maxActivePowerQuarterHourImport": 63325
+    },
+    "batteryStorage": null
+  },
+  "expense24h": 92.35,
+  "revenue24h": 0.23,
+  "categories": {
+    "baseload": {
+      "name": "Equipment rooms",
+      "activePower": 3409,
+      "energyImported24h": 144.58,
+      "energyExported24h": 48.75,
+      "expense24h": 37.97,
+      "revenue24h": 10
+    },
+    "chargePoint": {
+      "name": "Laadpunten",
+      "activePower": 0,
+      "energyImported24h": 174.77,
+      "energyExported24h": 0,
+      "expense24h": 47.62,
+      "revenue24h": 0
+    },
+    "climate": {
+      "name": "Klimaatbeheersing",
+      "activePower": 4594,
+      "energyImported24h": 73.58,
+      "energyExported24h": 0.26,
+      "expense24h": 22.14,
+      "revenue24h": 0.06
+    },
+    "kitchen": {
+      "name": "Keuken",
+      "activePower": 311,
+      "energyImported24h": 7.79,
+      "energyExported24h": 1.29,
+      "expense24h": 1.94,
+      "revenue24h": 0.3
+    },
+    "lighting": {
+      "name": "Verlichting",
+      "activePower": 2203,
+      "energyImported24h": 26.33,
+      "energyExported24h": 0,
+      "expense24h": 6.98,
+      "revenue24h": 0
+    },
+    "solarInverter": {
+      "name": "Zonnepanelen",
+      "activePower": -3198,
+      "energyImported24h": 0.22,
+      "energyExported24h": 90.1,
+      "expense24h": 0.09,
+      "revenue24h": 18.66
+    },
+    "workspaces": {
+      "name": "Werkplekken & wcd's",
+      "activePower": 1497,
+      "energyImported24h": 16.7,
+      "energyExported24h": 0.14,
+      "expense24h": 4.38,
+      "revenue24h": 0.03
+    }
+  },
+  "mainCircuit": {
+    "instantaneousActivePowerImportLimit": 60000,
+    "instantaneousActivePowerExportLimit": 35000,
+    "hasContractualActivePowerLimit": true,
+    "currentLoadFactor1Minute": 0.08,
+    "quarterHourElapsedRatio": 0.13,
+    "contractualActivePowerImportLimitInEffect": 50000,
+    "voluntaryActivePowerImportLimit": null
+  },
+  "energyPrices": {
+    "import": 0.3,
+    "export": 0.25
+  }
+}

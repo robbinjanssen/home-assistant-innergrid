@@ -1,0 +1,505 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Connect to the MQTT broker",
+                "description": "The connection is checked by waiting up to 30 seconds for a message below the topic prefix.",
+                "data": {
+                    "host": "Host",
+                    "port": "Port",
+                    "username": "Username",
+                    "password": "Password",
+                    "topic_prefix": "Topic prefix"
+                },
+                "data_description": {
+                    "host": "The MQTT broker of Innergrid that publishes the energy data.",
+                    "username": "Leave blank if the broker does not require a login.",
+                    "topic_prefix": "The first part of the topics: your customer site, for example mysite in mysite/system."
+                }
+            },
+            "reconfigure": {
+                "title": "Connect to the MQTT broker",
+                "description": "The connection is checked by waiting up to 30 seconds for a message below the topic prefix.",
+                "data": {
+                    "host": "Host",
+                    "port": "Port",
+                    "username": "Username",
+                    "password": "Password",
+                    "topic_prefix": "Topic prefix"
+                },
+                "data_description": {
+                    "host": "The MQTT broker of Innergrid that publishes the energy data.",
+                    "username": "Leave blank if the broker does not require a login.",
+                    "topic_prefix": "The first part of the topics: your customer site, for example mysite in mysite/system."
+                }
+            },
+            "reauth_confirm": {
+                "title": "Enter the login of the MQTT broker",
+                "description": "The MQTT broker {host} rejected the username or password.",
+                "data": {
+                    "username": "Username",
+                    "password": "Password"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Failed to connect to the MQTT broker.",
+            "invalid_auth": "The MQTT broker rejected the username or password.",
+            "no_messages": "Connected, but no messages arrived below the topic prefix within 30 seconds. Check the prefix.",
+            "invalid_topic_prefix": "Enter a topic prefix without the wildcards # and +."
+        },
+        "abort": {
+            "already_configured": "This broker and topic prefix are already configured.",
+            "reconfigure_successful": "The settings were changed.",
+            "reauth_successful": "The login was changed."
+        }
+    },
+    "device": {
+        "site": {
+            "name": "Site"
+        },
+        "space": {
+            "name": "Space {id}"
+        },
+        "system": {
+            "name": "Symcon server"
+        },
+        "milesight": {
+            "name": "Milesight {eui}"
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "abnormal_condition": {
+                "name": "Abnormal condition"
+            },
+            "temporary_over_limit_applied": {
+                "name": "Temporarily over limit"
+            },
+            "solar_charging_only": {
+                "name": "Solar charging only"
+            }
+        },
+        "event": {
+            "session": {
+                "name": "Charging session",
+                "state_attributes": {
+                    "event_type": {
+                        "state": {
+                            "session_changed": "Session changed"
+                        }
+                    }
+                }
+            }
+        },
+        "sensor": {
+            "grid_power": {
+                "name": "Grid power"
+            },
+            "grid_energy_imported_24h": {
+                "name": "Grid energy imported (24h)"
+            },
+            "grid_energy_exported_24h": {
+                "name": "Grid energy exported (24h)"
+            },
+            "grid_peak_import": {
+                "name": "Peak quarter-hour import power"
+            },
+            "grid_peak_export": {
+                "name": "Peak quarter-hour export power"
+            },
+            "grid_import_limit": {
+                "name": "Grid import limit"
+            },
+            "grid_export_limit": {
+                "name": "Grid export limit"
+            },
+            "production_power": {
+                "name": "Production power"
+            },
+            "production_energy_24h": {
+                "name": "Production energy (24h)"
+            },
+            "production_peak": {
+                "name": "Peak quarter-hour production power"
+            },
+            "consumption_power": {
+                "name": "Consumption power"
+            },
+            "consumption_energy_24h": {
+                "name": "Consumption energy (24h)"
+            },
+            "consumption_peak": {
+                "name": "Peak quarter-hour consumption power"
+            },
+            "battery_power": {
+                "name": "Battery power"
+            },
+            "grid_energy_imported_total": {
+                "name": "Grid energy imported"
+            },
+            "grid_energy_exported_total": {
+                "name": "Grid energy exported"
+            },
+            "production_energy_total": {
+                "name": "Production energy"
+            },
+            "consumption_energy_total": {
+                "name": "Consumption energy"
+            },
+            "expense_24h": {
+                "name": "Costs (24h)"
+            },
+            "revenue_24h": {
+                "name": "Revenue (24h)"
+            },
+            "energy_price_import": {
+                "name": "Energy price import"
+            },
+            "energy_price_export": {
+                "name": "Energy price export"
+            },
+            "main_circuit_load": {
+                "name": "Main connection load"
+            },
+            "power": {
+                "name": "Power"
+            },
+            "category_energy_imported_24h": {
+                "name": "Energy imported (24h)"
+            },
+            "category_energy_exported_24h": {
+                "name": "Energy exported (24h)"
+            },
+            "circuit_current": {
+                "name": "Circuit current {phase}"
+            },
+            "circuit_load": {
+                "name": "Circuit load ({minutes} min)"
+            },
+            "circuit_average_power_import": {
+                "name": "Average import power (15 min)"
+            },
+            "circuit_average_power_export": {
+                "name": "Average export power (15 min)"
+            },
+            "circuit_current_limit": {
+                "name": "Circuit current limit"
+            },
+            "circuit_warnings": {
+                "name": "Circuit warnings"
+            },
+            "status": {
+                "name": "Status",
+                "state": {
+                    "available": "Available",
+                    "preparing": "Preparing",
+                    "charging": "Charging",
+                    "suspended_by_ev": "Paused by vehicle",
+                    "throttled_by_ev": "Limited by vehicle",
+                    "suspended_by_evse": "Paused by charger",
+                    "finishing": "Finishing",
+                    "reserved": "Reserved",
+                    "unavailable": "Unavailable",
+                    "faulted": "Faulted"
+                }
+            },
+            "charging_state": {
+                "name": "Charging state",
+                "state": {
+                    "idle": "Idle",
+                    "charging": "Charging",
+                    "suspended_ev": "Paused by vehicle",
+                    "suspended_evse": "Paused by charger"
+                }
+            },
+            "charge_strategy": {
+                "name": "Charge strategy",
+                "state": {
+                    "smart_charging": "Smart charging",
+                    "direct_charging": "Direct charging"
+                }
+            },
+            "charging_power": {
+                "name": "Charging power"
+            },
+            "session_energy": {
+                "name": "Session energy"
+            },
+            "target_energy": {
+                "name": "Requested energy"
+            },
+            "departure": {
+                "name": "Departure"
+            },
+            "session_start": {
+                "name": "Session start"
+            },
+            "session_end": {
+                "name": "Session end"
+            },
+            "user": {
+                "name": "User"
+            },
+            "charge_current": {
+                "name": "Charge current"
+            },
+            "phases_enabled": {
+                "name": "Phases"
+            },
+            "power_instruction": {
+                "name": "Power instruction"
+            },
+            "minimum_power": {
+                "name": "Minimum power"
+            },
+            "manager_grid_power": {
+                "name": "Grid power"
+            },
+            "manager_solar_power": {
+                "name": "Solar power"
+            },
+            "manager_charge_point_power": {
+                "name": "Charge point power"
+            },
+            "manager_climate_power": {
+                "name": "Climate power"
+            },
+            "manager_baseload_power": {
+                "name": "Base load power"
+            },
+            "manager_inflexible_power": {
+                "name": "Inflexible power"
+            },
+            "manager_battery_power": {
+                "name": "Battery power"
+            },
+            "manager_optimized_import_power": {
+                "name": "Optimized import power"
+            },
+            "manager_flexible_power": {
+                "name": "Flexible power"
+            },
+            "manager_continuous_import_limit": {
+                "name": "Continuous import limit"
+            },
+            "manager_instantaneous_import_limit": {
+                "name": "Instantaneous import limit"
+            },
+            "manager_continuous_export_limit": {
+                "name": "Continuous export limit"
+            },
+            "manager_instantaneous_export_limit": {
+                "name": "Instantaneous export limit"
+            },
+            "manager_peak_shaving_limit": {
+                "name": "Peak shaving limit"
+            },
+            "optimization_goal": {
+                "name": "Optimization goal",
+                "state": {
+                    "scheduled_charging": "Scheduled charging"
+                }
+            },
+            "binding_limit": {
+                "name": "Binding limit",
+                "state": {
+                    "optimal_limit": "Optimal limit",
+                    "resource_minimum": "Minimum of a device"
+                }
+            },
+            "strategy": {
+                "name": "Strategy"
+            },
+            "cheapest_period_start": {
+                "name": "Cheapest period start"
+            },
+            "cheapest_period_price": {
+                "name": "Cheapest period price"
+            },
+            "baseline_price": {
+                "name": "Reference price"
+            },
+            "air_quality": {
+                "name": "Air quality",
+                "state": {
+                    "good": "Good"
+                }
+            },
+            "low_battery_count": {
+                "name": "Sensors with low battery"
+            },
+            "battery_voltage": {
+                "name": "Battery voltage"
+            },
+            "cpu_usage": {
+                "name": "CPU usage"
+            },
+            "memory_available": {
+                "name": "Memory available"
+            },
+            "memory_total": {
+                "name": "Memory total"
+            },
+            "disk_free": {
+                "name": "Disk free"
+            },
+            "disk_total": {
+                "name": "Disk total"
+            },
+            "last_backup": {
+                "name": "Last backup"
+            },
+            "system_started": {
+                "name": "System started"
+            },
+            "symcon_started": {
+                "name": "Symcon started"
+            },
+            "module_library_version": {
+                "name": "Module library version"
+            },
+            "io_connection_faults": {
+                "name": "I/O connection faults"
+            },
+            "instances_not_active": {
+                "name": "Inactive instances"
+            },
+            "overdue_timers": {
+                "name": "Overdue timers"
+            },
+            "backup_file_count": {
+                "name": "Backup files"
+            },
+            "api_request_count": {
+                "name": "API requests"
+            },
+            "active_power": {
+                "name": "Active power"
+            },
+            "active_power_phase": {
+                "name": "{phase} active power"
+            },
+            "apparent_power": {
+                "name": "Apparent power"
+            },
+            "apparent_power_phase": {
+                "name": "{phase} apparent power"
+            },
+            "charger_versus_grid_voltage_ratio": {
+                "name": "Charger vs grid voltage ratio"
+            },
+            "charger_versus_grid_voltage_ratio_phase": {
+                "name": "{phase} charger vs grid voltage ratio"
+            },
+            "contactor_voltage": {
+                "name": "Contactor voltage"
+            },
+            "contactor_voltage_phase": {
+                "name": "{phase} contactor voltage"
+            },
+            "current": {
+                "name": "Current"
+            },
+            "current_phase": {
+                "name": "{phase} current"
+            },
+            "current_neutral": {
+                "name": "Neutral current"
+            },
+            "current_neutral_phase": {
+                "name": "{phase} neutral current"
+            },
+            "current_transformer_primary_current_range": {
+                "name": "CT primary current range"
+            },
+            "current_transformer_primary_current_range_phase": {
+                "name": "{phase} CT primary current range"
+            },
+            "energy_charged_in_current_session": {
+                "name": "Energy charged in current session"
+            },
+            "energy_charged_in_current_session_phase": {
+                "name": "{phase} energy charged in current session"
+            },
+            "energy_exported": {
+                "name": "Energy exported"
+            },
+            "energy_exported_phase": {
+                "name": "{phase} energy exported"
+            },
+            "energy_imported": {
+                "name": "Energy imported"
+            },
+            "energy_imported_phase": {
+                "name": "{phase} energy imported"
+            },
+            "frequency": {
+                "name": "Frequency"
+            },
+            "frequency_phase": {
+                "name": "{phase} frequency"
+            },
+            "maximum_current": {
+                "name": "Maximum current"
+            },
+            "maximum_current_phase": {
+                "name": "{phase} maximum current"
+            },
+            "phase_angle": {
+                "name": "Phase angle"
+            },
+            "phase_angle_phase": {
+                "name": "{phase} phase angle"
+            },
+            "power_factor": {
+                "name": "Power factor"
+            },
+            "power_factor_phase": {
+                "name": "{phase} power factor"
+            },
+            "reactive_energy_exported": {
+                "name": "Reactive energy exported"
+            },
+            "reactive_energy_exported_phase": {
+                "name": "{phase} reactive energy exported"
+            },
+            "reactive_energy_imported": {
+                "name": "Reactive energy imported"
+            },
+            "reactive_energy_imported_phase": {
+                "name": "{phase} reactive energy imported"
+            },
+            "reactive_power": {
+                "name": "Reactive power"
+            },
+            "reactive_power_phase": {
+                "name": "{phase} reactive power"
+            },
+            "total_harmonic_current_distortion": {
+                "name": "Total harmonic current distortion"
+            },
+            "total_harmonic_current_distortion_phase": {
+                "name": "{phase} total harmonic current distortion"
+            },
+            "total_harmonic_voltage_distortion": {
+                "name": "Total harmonic voltage distortion"
+            },
+            "total_harmonic_voltage_distortion_phase": {
+                "name": "{phase} total harmonic voltage distortion"
+            },
+            "voltage": {
+                "name": "Voltage"
+            },
+            "voltage_phase": {
+                "name": "{phase} voltage"
+            },
+            "warnings": {
+                "name": "Warnings"
+            },
+            "warnings_phase": {
+                "name": "{phase} warnings"
+            }
+        }
+    }
+}

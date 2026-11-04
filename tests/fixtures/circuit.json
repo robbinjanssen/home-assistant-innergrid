@@ -1,0 +1,28 @@
+{
+  "id": 19923,
+  "name": "Groep 13",
+  "electricityMeterId": 37373,
+  "isThreePhase": true,
+  "currentLoadFactor": {
+    "1-minute": 0,
+    "5-minute": 0,
+    "15-minute": 0
+  },
+  "averageActivePower": {
+    "15-minute": {
+      "import": 16,
+      "export": 0
+    }
+  },
+  "warnings": 0,
+  "instantaneousLimits": {
+    "current": 20,
+    "activePowerImport": 13202,
+    "activePowerExport": 13202
+  },
+  "currentL1": 0.058,
+  "currentL2": 0,
+  "currentL3": 0,
+  "activePower": 6,
+  "apparentPower": 7
+}

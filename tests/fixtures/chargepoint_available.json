@@ -1,0 +1,69 @@
+{
+  "id": 55602,
+  "name": "Lader 08",
+  "humanUsableIdentifier": {
+    "primary": "Lader 08",
+    "secondary": ""
+  },
+  "session": {
+    "chargingState": "IDLE",
+    "status": "AVAILABLE",
+    "chargeStrategy": "SMART_CHARGING",
+    "minimumPower": 4200,
+    "targetEnergyRequest": 60,
+    "departureAt": "2026-11-03T14:45:00Z",
+    "sessionId": 22,
+    "startedAt": "2026-11-03T07:53:13Z",
+    "finishedAt": "2026-11-03T16:06:39Z",
+    "username": "Bob",
+    "isClaimed": false
+  },
+  "powerManagement": {
+    "powerInstruction": 0,
+    "physicalPowerConstraints": [
+      {
+        "lowerLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        },
+        "isAbnormalConditionOnly": false,
+        "commodityQuantity": "ELECTRIC_POWER",
+        "phaseUsageCapability": null
+      },
+      {
+        "upperLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        },
+        "isAbnormalConditionOnly": false,
+        "commodityQuantity": "ELECTRIC_POWER",
+        "phaseUsageCapability": null
+      }
+    ],
+    "chargeCurrent": 0,
+    "phasesEnabled": 3
+  },
+  "powerForecast": {},
+  "measurements": {
+    "activePower": 0,
+    "activePowerAggregates": {},
+    "energyCharged": 41.06
+  },
+  "defaults": {
+    "chargeStrategy": "SMART_CHARGING",
+    "sessionDuration": 25200,
+    "targetEnergyRequest": 30,
+    "minimumPower": 4200
+  },
+  "capabilities": {
+    "chargePoint": {
+      "minimumChargeCurrent": 6,
+      "maximumChargeCurrent": 16
+    },
+    "vehicle": {
+      "minimumChargeCurrent": 0,
+      "maximumChargeCurrent": 0,
+      "phases": 3
+    }
+  }
+}

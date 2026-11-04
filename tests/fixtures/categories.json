@@ -1,0 +1,260 @@
+{
+  "customerSite": {
+    "expense24h": 92.35,
+    "revenue24h": 0.23,
+    "electricityMeters": {
+      "main": {
+        "id": 14402,
+        "name": "Hoofdaansluiting",
+        "activePower": 10802,
+        "energyImported24h": 305.93,
+        "energyExported24h": 1.1,
+        "maxActivePowerQuarterHourImport": 47299,
+        "maxActivePowerQuarterHourExport": 2301,
+        "continuousActivePowerImportLimit": 57600,
+        "continuousActivePowerExportLimit": 31800
+      },
+      "production": {
+        "id": 52115,
+        "name": "Omvormers",
+        "activePower": -3200,
+        "energyExported24h": 90.1,
+        "maxActivePowerQuarterHourExport": 20877
+      },
+      "consumption": {
+        "id": 32859,
+        "name": "Verbruik",
+        "activePower": 12038,
+        "energyImported24h": 394.95,
+        "maxActivePowerQuarterHourImport": 63325
+      },
+      "batteryStorage": null
+    }
+  },
+  "categories": {
+    "baseload": {
+      "name": "Equipment rooms",
+      "activePower": 5369,
+      "energyImported24h": 144.58,
+      "energyExported24h": 48.75,
+      "expense24h": 37.97,
+      "revenue24h": 10,
+      "resources": [
+        {
+          "id": 49641,
+          "name": "Groep 1",
+          "electricityMeterId": 21346,
+          "circuitId": 33281,
+          "activePower": 240,
+          "energyImported24h": 5.74,
+          "energyExported24h": 0,
+          "expense24h": 1.58,
+          "revenue24h": 0
+        },
+        {
+          "id": 21422,
+          "name": "Groep 2",
+          "electricityMeterId": 38543,
+          "circuitId": 22934,
+          "activePower": -26,
+          "energyImported24h": 0.02,
+          "energyExported24h": 0.66,
+          "expense24h": 0.01,
+          "revenue24h": 0.15
+        }
+      ]
+    },
+    "chargePoint": {
+      "name": "Laadpunten",
+      "activePower": 0,
+      "energyImported24h": 174.77,
+      "energyExported24h": 0,
+      "expense24h": 47.62,
+      "revenue24h": 0,
+      "resources": [
+        {
+          "id": 51511,
+          "name": "Lader 11",
+          "electricityMeterId": 56950,
+          "circuitId": 42189,
+          "activePower": 0,
+          "energyImported24h": 0,
+          "energyExported24h": 0,
+          "expense24h": 0,
+          "revenue24h": 0
+        },
+        {
+          "id": 48956,
+          "name": "Lader 10",
+          "electricityMeterId": 19319,
+          "circuitId": 27242,
+          "activePower": 0,
+          "energyImported24h": 29.85,
+          "energyExported24h": 0,
+          "expense24h": 7.7,
+          "revenue24h": 0
+        }
+      ]
+    },
+    "climate": {
+      "name": "Klimaatbeheersing",
+      "activePower": 4594,
+      "energyImported24h": 73.58,
+      "energyExported24h": 0.26,
+      "expense24h": 22.14,
+      "revenue24h": 0.06,
+      "resources": [
+        {
+          "id": 51302,
+          "name": "Groep 3",
+          "electricityMeterId": 25061,
+          "circuitId": 50746,
+          "activePower": 2197,
+          "energyImported24h": 27.6,
+          "energyExported24h": 0,
+          "expense24h": 8.35,
+          "revenue24h": 0
+        },
+        {
+          "id": 47199,
+          "name": "Groep 4",
+          "electricityMeterId": 11579,
+          "circuitId": 39729,
+          "activePower": 595,
+          "energyImported24h": 18.53,
+          "energyExported24h": 0,
+          "expense24h": 5.46,
+          "revenue24h": 0
+        }
+      ]
+    },
+    "kitchen": {
+      "name": "Keuken",
+      "activePower": 311,
+      "energyImported24h": 7.79,
+      "energyExported24h": 1.29,
+      "expense24h": 1.94,
+      "revenue24h": 0.3,
+      "resources": [
+        {
+          "id": 57103,
+          "name": "Groep 5",
+          "electricityMeterId": 20860,
+          "circuitId": 51125,
+          "activePower": 3,
+          "energyImported24h": 0.5,
+          "energyExported24h": 0.02,
+          "expense24h": 0.1,
+          "revenue24h": 0.01
+        },
+        {
+          "id": 49434,
+          "name": "Groep 6",
+          "electricityMeterId": 31649,
+          "circuitId": 47578,
+          "activePower": 0,
+          "energyImported24h": 0.02,
+          "energyExported24h": 0.02,
+          "expense24h": 0.01,
+          "revenue24h": 0
+        }
+      ]
+    },
+    "lighting": {
+      "name": "Verlichting",
+      "activePower": 2203,
+      "energyImported24h": 26.33,
+      "energyExported24h": 0,
+      "expense24h": 6.98,
+      "revenue24h": 0,
+      "resources": [
+        {
+          "id": 49178,
+          "name": "Groep 7",
+          "electricityMeterId": 28086,
+          "circuitId": 47631,
+          "activePower": 43,
+          "energyImported24h": 0.21,
+          "energyExported24h": 0,
+          "expense24h": 0.04,
+          "revenue24h": 0
+        },
+        {
+          "id": 22180,
+          "name": "Groep 8",
+          "electricityMeterId": 50621,
+          "circuitId": 59568,
+          "activePower": 409,
+          "energyImported24h": 4.46,
+          "energyExported24h": 0,
+          "expense24h": 1.18,
+          "revenue24h": 0
+        }
+      ]
+    },
+    "solarInverter": {
+      "name": "Zonnepanelen",
+      "activePower": -3198,
+      "energyImported24h": 0.22,
+      "energyExported24h": 90.1,
+      "expense24h": 0.09,
+      "revenue24h": 18.66,
+      "resources": [
+        {
+          "id": 21809,
+          "name": "Groep 9",
+          "electricityMeterId": 31851,
+          "circuitId": 21718,
+          "activePower": -1304,
+          "energyImported24h": 0.06,
+          "energyExported24h": 27.93,
+          "expense24h": 0.03,
+          "revenue24h": 5.8
+        },
+        {
+          "id": 30172,
+          "name": "Groep 10",
+          "electricityMeterId": 25388,
+          "circuitId": 18350,
+          "activePower": -654,
+          "energyImported24h": 0.06,
+          "energyExported24h": 34.03,
+          "expense24h": 0.02,
+          "revenue24h": 6.99
+        }
+      ]
+    },
+    "workspaces": {
+      "name": "Werkplekken & wcd's",
+      "activePower": 1497,
+      "energyImported24h": 16.7,
+      "energyExported24h": 0.14,
+      "expense24h": 4.38,
+      "revenue24h": 0.03,
+      "resources": [
+        {
+          "id": 59484,
+          "name": "Groep 11",
+          "electricityMeterId": 33730,
+          "circuitId": 24067,
+          "activePower": 2,
+          "energyImported24h": 0.07,
+          "energyExported24h": 0,
+          "expense24h": 0.02,
+          "revenue24h": 0
+        },
+        {
+          "id": 54277,
+          "name": "Groep 12",
+          "electricityMeterId": 17499,
+          "circuitId": 54963,
+          "activePower": 384,
+          "energyImported24h": 3.86,
+          "energyExported24h": 0,
+          "expense24h": 0.99,
+          "revenue24h": 0
+        }
+      ]
+    }
+  }
+}

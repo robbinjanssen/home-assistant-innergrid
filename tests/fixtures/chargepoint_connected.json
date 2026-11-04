@@ -1,0 +1,75 @@
+{
+  "id": 19463,
+  "name": "Lader 06",
+  "humanUsableIdentifier": {
+    "primary": "Lader 06",
+    "secondary": ""
+  },
+  "session": {
+    "chargingState": "SUSPENDED_EV",
+    "status": "SUSPENDED_BY_EV",
+    "chargeStrategy": "SMART_CHARGING",
+    "minimumPower": 4200,
+    "targetEnergyRequest": 40,
+    "departureAt": "2026-11-04T15:00:00Z",
+    "sessionId": 35,
+    "startedAt": "2026-11-04T06:41:24Z",
+    "finishedAt": "2026-11-03T08:04:37Z",
+    "username": "Alice",
+    "isClaimed": false
+  },
+  "powerManagement": {
+    "powerInstruction": 0,
+    "physicalPowerConstraints": [
+      {
+        "lowerLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        },
+        "isAbnormalConditionOnly": false,
+        "commodityQuantity": "ELECTRIC_POWER",
+        "phaseUsageCapability": null
+      },
+      {
+        "upperLimit": {
+          "startOfRange": 0,
+          "endOfRange": 0
+        },
+        "isAbnormalConditionOnly": false,
+        "commodityQuantity": "ELECTRIC_POWER",
+        "phaseUsageCapability": null
+      }
+    ],
+    "chargeCurrent": 16,
+    "phasesEnabled": 3
+  },
+  "powerForecast": {},
+  "measurements": {
+    "activePower": 0,
+    "activePowerAggregates": {
+      "2026-11-04T06:41:00Z": 0,
+      "2026-11-04T06:42:00Z": 3053,
+      "2026-11-04T06:43:00Z": 4288,
+      "2026-11-04T06:44:00Z": 10533,
+      "2026-11-04T06:45:00Z": 4803
+    },
+    "energyCharged": 33.06
+  },
+  "defaults": {
+    "chargeStrategy": "SMART_CHARGING",
+    "sessionDuration": 25200,
+    "targetEnergyRequest": 30,
+    "minimumPower": 4200
+  },
+  "capabilities": {
+    "chargePoint": {
+      "minimumChargeCurrent": 6,
+      "maximumChargeCurrent": 16
+    },
+    "vehicle": {
+      "minimumChargeCurrent": 6,
+      "maximumChargeCurrent": 16,
+      "phases": 3
+    }
+  }
+}
