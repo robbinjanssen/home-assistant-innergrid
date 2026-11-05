@@ -182,3 +182,72 @@ async def test_reauth(
     assert mock_config_entry.data["password"] == "pw"
     assert mock_config_entry.data["host"] == "broker.local"
     await hass.async_block_till_done()
+
+
+API_INPUT = {
+    **USER_INPUT,
+    "api_url": " http://edge.local:31679/hook/api/ ",
+    "api_email": "user@example.com",
+    "api_password": "secret",
+}
+
+
+@pytest.mark.usefixtures("mock_wait_for_data")
+async def test_create_entry_with_api(hass: HomeAssistant) -> None:
+    """Test creating an entry with the REST API, which logs in."""
+    with (
+        patch("innergrid.InnergridApi.login", AsyncMock()) as login,
+        # The entry is set up right away, which fetches the space names.
+        patch("innergrid.InnergridApi.spaces", AsyncMock(return_value=[])),
+    ):
+        result = await hass.config_entries.flow.async_init(
+            DOMAIN, context={"source": SOURCE_USER}
+        )
+        result = await hass.config_entries.flow.async_configure(
+            result["flow_id"], API_INPUT
+        )
+        await hass.async_block_till_done()
+    assert result["type"] is FlowResultType.CREATE_ENTRY
+    assert result["data"]["api_url"] == "http://edge.local:31679/hook/api"
+    login.assert_awaited_once()
+
+
+@pytest.mark.usefixtures("mock_wait_for_data")
+async def test_empty_api_fields_are_left_out(hass: HomeAssistant) -> None:
+    """Test that empty REST API fields are not stored."""
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN, context={"source": SOURCE_USER}
+    )
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {**USER_INPUT, "api_url": " ", "api_email": ""}
+    )
+    assert result["type"] is FlowResultType.CREATE_ENTRY
+    assert "api_url" not in result["data"]
+    assert "api_email" not in result["data"]
+
+
+@pytest.mark.parametrize(
+    ("user_input", "error", "key"),
+    [
+        ({**API_INPUT, "api_password": ""}, None, "api_incomplete"),
+        (API_INPUT, InnergridAuthError("rejected"), "invalid_api_auth"),
+        (API_INPUT, InnergridConnectionError("down"), "cannot_connect_api"),
+    ],
+)
+@pytest.mark.usefixtures("mock_wait_for_data")
+async def test_api_errors(
+    hass: HomeAssistant,
+    user_input: dict[str, object],
+    error: Exception | None,
+    key: str,
+) -> None:
+    """Test that a REST API that cannot be used shows an error."""
+    with patch("innergrid.InnergridApi.login", AsyncMock(side_effect=error)):
+        result = await hass.config_entries.flow.async_init(
+            DOMAIN, context={"source": SOURCE_USER}
+        )
+        result = await hass.config_entries.flow.async_configure(
+            result["flow_id"], user_input
+        )
+    assert result["type"] is FlowResultType.FORM
+    assert result["errors"] == {"base": key}

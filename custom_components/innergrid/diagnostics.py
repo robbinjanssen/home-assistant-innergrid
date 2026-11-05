@@ -7,13 +7,21 @@ from typing import TYPE_CHECKING, Any
 from homeassistant.components.diagnostics import async_redact_data
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 
+from .const import CONF_API_EMAIL, CONF_API_PASSWORD
+
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
 
     from .hub import InnergridConfigEntry
 
 # The broker login, and the names of the people charging their car.
-TO_REDACT = {CONF_PASSWORD, CONF_USERNAME, "username"}
+TO_REDACT = {
+    CONF_PASSWORD,
+    CONF_USERNAME,
+    "username",
+    CONF_API_EMAIL,
+    CONF_API_PASSWORD,
+}
 # The energy manager names its charge point resources after the person
 # charging, for example "Lader 10 (Bob)".
 RESOURCES_TO_REDACT = {"chargePointResources"}
@@ -41,6 +49,8 @@ async def async_get_config_entry_diagnostics(
             "options": dict(entry.options),
         },
         "connected": hub.connected,
+        "api": hub.api is not None,
+        "space_names": hub.space_names,
         "data": {
             key: {
                 "available": hub.is_available(key),

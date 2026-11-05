@@ -105,21 +105,24 @@ MILESIGHT_BINARY_SENSORS: list[InnergridBinarySensorEntityDescription] = [
 BINARY_SENSORS_BY_KIND: dict[
     Kind,
     tuple[
-        Callable[[str, Any], InnergridDevice],
+        Callable[[InnergridHub, str, Any], InnergridDevice],
         list[InnergridBinarySensorEntityDescription],
     ],
 ] = {
     Kind.CHARGE_POINT: (
-        lambda _idx, data: chargepoint_device(data),
+        lambda _hub, _idx, data: chargepoint_device(data),
         CHARGEPOINT_BINARY_SENSORS,
     ),
     Kind.ENERGY_MANAGER: (
-        lambda _idx, data: energy_manager_device(data),
+        lambda _hub, _idx, data: energy_manager_device(data),
         ENERGY_MANAGER_BINARY_SENSORS,
     ),
-    Kind.SPACE: (lambda idx, _data: space_device(idx), SPACE_BINARY_SENSORS),
+    Kind.SPACE: (
+        lambda hub, idx, _data: space_device(idx, hub.space_names.get(idx)),
+        SPACE_BINARY_SENSORS,
+    ),
     Kind.MILESIGHT: (
-        lambda idx, _data: milesight_device(idx),
+        lambda _hub, idx, _data: milesight_device(idx),
         MILESIGHT_BINARY_SENSORS,
     ),
 }
@@ -132,7 +135,7 @@ def binary_sensor_targets(hub: InnergridHub, key: str) -> list[EntityTarget]:
         return []
     device_fn, descriptions = kind
     return targets(
-        key, lambda: device_fn(update.id, update.data), descriptions, update.data
+        key, lambda: device_fn(hub, update.id, update.data), descriptions, update.data
     )
 
 
@@ -169,5 +172,5 @@ class InnergridBinarySensor(InnergridEntity, BinarySensorEntity):
     @property
     def is_on(self) -> bool | None:
         """Return whether the binary sensor is on."""
-        value = self.value
+        value = self.data_value
         return value if isinstance(value, bool) else None

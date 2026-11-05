@@ -9,12 +9,17 @@
                     "port": "Port",
                     "username": "Username",
                     "password": "Password",
-                    "topic_prefix": "Customer site slug"
+                    "topic_prefix": "Customer site slug",
+                    "api_url": "REST API URL",
+                    "api_email": "REST API e-mail address",
+                    "api_password": "REST API password"
                 },
                 "data_description": {
                     "host": "The MQTT broker of Innergrid that publishes the energy data.",
                     "username": "Leave blank if the broker does not require a login.",
-                    "topic_prefix": "The slug of the customer site: the first part of its topics, for example mysite in mysite/system."
+                    "topic_prefix": "The slug of the customer site: the first part of its topics, for example mysite in mysite/system.",
+                    "api_url": "Optional: the REST API of the edge server, for example http://192.0.2.10:31679/hook/api. It adds the names of the spaces and the control of the chargers.",
+                    "api_email": "A user of the edge server (Loqio WebApp)."
                 }
             },
             "reconfigure": {
@@ -25,12 +30,17 @@
                     "port": "Port",
                     "username": "Username",
                     "password": "Password",
-                    "topic_prefix": "Customer site slug"
+                    "topic_prefix": "Customer site slug",
+                    "api_url": "REST API URL",
+                    "api_email": "REST API e-mail address",
+                    "api_password": "REST API password"
                 },
                 "data_description": {
                     "host": "The MQTT broker of Innergrid that publishes the energy data.",
                     "username": "Leave blank if the broker does not require a login.",
-                    "topic_prefix": "The slug of the customer site: the first part of its topics, for example mysite in mysite/system."
+                    "topic_prefix": "The slug of the customer site: the first part of its topics, for example mysite in mysite/system.",
+                    "api_url": "Optional: the REST API of the edge server, for example http://192.0.2.10:31679/hook/api. It adds the names of the spaces and the control of the chargers.",
+                    "api_email": "A user of the edge server (Loqio WebApp)."
                 }
             },
             "reauth_confirm": {
@@ -46,7 +56,10 @@
             "cannot_connect": "Failed to connect to the MQTT broker.",
             "invalid_auth": "The MQTT broker rejected the username or password.",
             "no_messages": "Connected, but no messages of the customer site arrived within 30 seconds. Check the slug.",
-            "invalid_topic_prefix": "Enter the slug of the customer site, without the wildcards # and +."
+            "invalid_topic_prefix": "Enter the slug of the customer site, without the wildcards # and +.",
+            "api_incomplete": "Enter the URL, e-mail address and password of the REST API, or leave all three empty.",
+            "invalid_api_auth": "The REST API rejected the e-mail address or password.",
+            "cannot_connect_api": "Failed to connect to the REST API."
         },
         "abort": {
             "already_configured": "This broker and customer site are already configured.",
@@ -217,7 +230,8 @@
                 "name": "Charge strategy",
                 "state": {
                     "smart_charging": "Smart charging",
-                    "direct_charging": "Direct charging"
+                    "direct_charging": "Direct charging",
+                    "solar_charging": "Solar charging"
                 }
             },
             "charging_power": {
@@ -502,6 +516,41 @@
             "warnings_phase": {
                 "name": "{phase} warnings"
             }
+        },
+        "select": {
+            "charge_strategy": {
+                "name": "Charge strategy",
+                "state": {
+                    "smart_charging": "Smart charging",
+                    "direct_charging": "Direct charging",
+                    "solar_charging": "Solar charging"
+                }
+            }
+        },
+        "number": {
+            "target_energy": {
+                "name": "Charging target"
+            }
+        },
+        "datetime": {
+            "departure": {
+                "name": "Departure"
+            }
+        },
+        "text": {
+            "user": {
+                "name": "User"
+            }
+        },
+        "switch": {
+            "claimed": {
+                "name": "Claimed"
+            }
+        }
+    },
+    "exceptions": {
+        "api_error": {
+            "message": "Could not change the charging session: {error}"
         }
     }
 }

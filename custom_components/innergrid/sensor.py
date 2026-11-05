@@ -943,12 +943,12 @@ def _circuit_targets(hub: InnergridHub, update: Update) -> list[EntityTarget]:
 
 
 def _simple_targets(
-    device_fn: Callable[[Update], Any],
+    device_fn: Callable[[InnergridHub, Update], Any],
     descriptions: list[InnergridSensorEntityDescription],
 ) -> Callable[[InnergridHub, Update], list[EntityTarget]]:
     """Return a function that returns the targets of a topic with one device."""
-    return lambda _hub, update: targets(
-        update.key, lambda: device_fn(update), descriptions, update.data
+    return lambda hub, update: targets(
+        update.key, lambda: device_fn(hub, update), descriptions, update.data
     )
 
 
@@ -958,25 +958,30 @@ def _model(update: Update) -> Any:
 
 
 TARGETS_BY_KIND: dict[Kind, Callable[[InnergridHub, Update], list[EntityTarget]]] = {
-    Kind.SITE: _simple_targets(lambda update: site_device(update.id), SITE_SENSORS),
+    Kind.SITE: _simple_targets(
+        lambda _hub, update: site_device(update.id), SITE_SENSORS
+    ),
     Kind.CATEGORIES: _category_targets,
     Kind.METER: _meter_targets,
     Kind.CIRCUIT: _circuit_targets,
     Kind.CHARGE_POINT: _simple_targets(
-        lambda update: chargepoint_device(_model(update)),
+        lambda _hub, update: chargepoint_device(_model(update)),
         CHARGEPOINT_SENSORS,
     ),
     Kind.ENERGY_MANAGER: _simple_targets(
-        lambda update: energy_manager_device(_model(update)),
+        lambda _hub, update: energy_manager_device(_model(update)),
         ENERGY_MANAGER_SENSORS,
     ),
-    Kind.SPACE: _simple_targets(lambda update: space_device(update.id), SPACE_SENSORS),
+    Kind.SPACE: _simple_targets(
+        lambda hub, update: space_device(update.id, hub.space_names.get(update.id)),
+        SPACE_SENSORS,
+    ),
     Kind.SYSTEM: _simple_targets(
-        lambda update: system_device(_model(update)),
+        lambda _hub, update: system_device(_model(update)),
         SYSTEM_SENSORS,
     ),
     Kind.MILESIGHT: _simple_targets(
-        lambda update: milesight_device(update.id), MILESIGHT_SENSORS
+        lambda _hub, update: milesight_device(update.id), MILESIGHT_SENSORS
     ),
 }
 
@@ -1022,4 +1027,4 @@ class InnergridSensor(InnergridEntity, SensorEntity):
     @property
     def native_value(self) -> Any:
         """Return the value of the sensor."""
-        return self.value
+        return self.data_value

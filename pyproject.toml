@@ -1,6 +1,6 @@
 [project]
 name = "home-assistant-innergrid"
-version = "0.2.0"
+version = "0.3.0"
 description = "Read the energy and building data of an Innergrid customer site from MQTT in Home Assistant."
 authors = [{ name = "Robbin Janssen", email = "robbinjanssen@gmail.com" }]
 license = "MIT"
@@ -25,7 +25,7 @@ package = false
 
 [tool.uv.sources]
 # Develop against the library's main branch, the manifest pins the release.
-innergrid = { git = "https://github.com/robbinjanssen/python-innergrid.git", branch = "main" }
+innergrid = { path = "../python-innergrid", editable = true }
 
 [tool.mypy]
 # Specify the target platform details in config, so your developers are
