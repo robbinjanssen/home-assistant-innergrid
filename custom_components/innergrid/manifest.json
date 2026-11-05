@@ -10,7 +10,7 @@
     "iot_class": "local_push",
     "issue_tracker": "https://github.com/robbinjanssen/home-assistant-innergrid/issues",
     "requirements": [
-        "innergrid==0.1.0"
+        "innergrid==0.2.0"
     ],
-    "version": "0.1.0"
+    "version": "0.2.0"
 }

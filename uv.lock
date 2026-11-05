@@ -1324,7 +1324,7 @@ wheels = [
 
 [[package]]
 name = "home-assistant-innergrid"
-version = "0.1.0"
+version = "0.2.0"
 source = { virtual = "." }
 dependencies = [
     { name = "innergrid" },
@@ -1481,7 +1481,7 @@ wheels = [
 [[package]]
 name = "innergrid"
 version = "0.0.0"
-source = { git = "https://github.com/robbinjanssen/python-innergrid.git?branch=main#a2e48a033b27daa8a832db90e69cb29e525e2ad9" }
+source = { git = "https://github.com/robbinjanssen/python-innergrid.git?branch=main#196ef03f24703ee92abc607863a22cfeb0b34946" }
 dependencies = [
     { name = "aiomqtt" },
 ]

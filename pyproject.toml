@@ -1,6 +1,6 @@
 [project]
 name = "home-assistant-innergrid"
-version = "0.1.0"
+version = "0.2.0"
 description = "Read the energy and building data of an Innergrid customer site from MQTT in Home Assistant."
 authors = [{ name = "Robbin Janssen", email = "robbinjanssen@gmail.com" }]
 license = "MIT"

@@ -3,34 +3,34 @@
         "step": {
             "user": {
                 "title": "Connect to the MQTT broker",
-                "description": "The connection is checked by waiting up to 30 seconds for a message below the topic prefix.",
+                "description": "The connection is checked by waiting up to 30 seconds for a message of the customer site.",
                 "data": {
                     "host": "Host",
                     "port": "Port",
                     "username": "Username",
                     "password": "Password",
-                    "topic_prefix": "Topic prefix"
+                    "topic_prefix": "Customer site slug"
                 },
                 "data_description": {
                     "host": "The MQTT broker of Innergrid that publishes the energy data.",
                     "username": "Leave blank if the broker does not require a login.",
-                    "topic_prefix": "The first part of the topics: your customer site, for example mysite in mysite/system."
+                    "topic_prefix": "The slug of the customer site: the first part of its topics, for example mysite in mysite/system."
                 }
             },
             "reconfigure": {
                 "title": "Connect to the MQTT broker",
-                "description": "The connection is checked by waiting up to 30 seconds for a message below the topic prefix.",
+                "description": "The connection is checked by waiting up to 30 seconds for a message of the customer site.",
                 "data": {
                     "host": "Host",
                     "port": "Port",
                     "username": "Username",
                     "password": "Password",
-                    "topic_prefix": "Topic prefix"
+                    "topic_prefix": "Customer site slug"
                 },
                 "data_description": {
                     "host": "The MQTT broker of Innergrid that publishes the energy data.",
                     "username": "Leave blank if the broker does not require a login.",
-                    "topic_prefix": "The first part of the topics: your customer site, for example mysite in mysite/system."
+                    "topic_prefix": "The slug of the customer site: the first part of its topics, for example mysite in mysite/system."
                 }
             },
             "reauth_confirm": {
@@ -45,11 +45,11 @@
         "error": {
             "cannot_connect": "Failed to connect to the MQTT broker.",
             "invalid_auth": "The MQTT broker rejected the username or password.",
-            "no_messages": "Connected, but no messages arrived below the topic prefix within 30 seconds. Check the prefix.",
-            "invalid_topic_prefix": "Enter a topic prefix without the wildcards # and +."
+            "no_messages": "Connected, but no messages of the customer site arrived within 30 seconds. Check the slug.",
+            "invalid_topic_prefix": "Enter the slug of the customer site, without the wildcards # and +."
         },
         "abort": {
-            "already_configured": "This broker and topic prefix are already configured.",
+            "already_configured": "This broker and customer site are already configured.",
             "reconfigure_successful": "The settings were changed.",
             "reauth_successful": "The login was changed."
         }
@@ -323,7 +323,9 @@
             "air_quality": {
                 "name": "Air quality",
                 "state": {
-                    "good": "Good"
+                    "good": "Good",
+                    "moderate": "Moderate",
+                    "poor": "Poor"
                 }
             },
             "low_battery_count": {

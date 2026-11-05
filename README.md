@@ -32,21 +32,26 @@ Add the integration on the integrations page and enter:
 | Host | The MQTT broker, for example `192.0.2.10`. |
 | Port | The port of the broker, for example `1883`. |
 | Username, password | Only if the broker requires a login. |
-| Topic prefix | The first part of the topics: the customer site, for example `mysite`. |
+| Customer site slug | The slug of the customer site: the first part of its topics, for example `mysite`. |
 
 The integration connects to the broker itself, next to Home Assistant's own
 MQTT integration, and checks the settings by waiting up to 30 seconds for a
-message below the prefix. To change the settings later, choose
+message of the customer site. To change the settings later, choose
 **Reconfigure** in the integration's menu.
 
 ## Devices and entities
 
-The broker does not keep (retain) its messages, so devices and entities are
-added as their first message arrives, within about a minute after the first
-start; the Milesight sensors publish every 3 minutes. The integration stores
-the latest data, so after a restart or reload the entities show their last
-values right away, until new data arrives. Data that is not updated for 15
-minutes, or while the connection is lost, is unavailable.
+The platform's topics are retained, so all devices and entities are added
+right after connecting; the Milesight sensors are not retained and publish
+every 3 minutes. The integration also stores the latest data, so the entities
+show their last values while the broker cannot be reached. Data that is not
+updated for 15 minutes, or while the connection is lost, is unavailable.
+
+When the platform removes a charger, meter, space or other instance, it
+publishes an empty message on its topic; the integration then removes its
+entities, and devices that have no entities left. An instance that was removed
+while Home Assistant was not connected is removed when it has not arrived
+again 2 minutes after connecting.
 
 | Device | Entities |
 | --- | --- |
