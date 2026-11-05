@@ -323,7 +323,9 @@
             "air_quality": {
                 "name": "Air quality",
                 "state": {
-                    "good": "Good"
+                    "good": "Good",
+                    "moderate": "Moderate",
+                    "poor": "Poor"
                 }
             },
             "low_battery_count": {
