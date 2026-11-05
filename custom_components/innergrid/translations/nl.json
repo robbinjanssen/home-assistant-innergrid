@@ -3,34 +3,34 @@
         "step": {
             "user": {
                 "title": "Verbinden met de MQTT-broker",
-                "description": "De verbinding wordt gecontroleerd door maximaal 30 seconden te wachten op een bericht onder de topic-prefix.",
+                "description": "De verbinding wordt gecontroleerd door maximaal 30 seconden te wachten op een bericht van de customer site.",
                 "data": {
                     "host": "Host",
                     "port": "Poort",
                     "username": "Gebruikersnaam",
                     "password": "Wachtwoord",
-                    "topic_prefix": "Topic-prefix"
+                    "topic_prefix": "Slug van de customer site"
                 },
                 "data_description": {
                     "host": "De MQTT-broker van Innergrid die de energiegegevens publiceert.",
                     "username": "Laat leeg als de broker geen inlog vereist.",
-                    "topic_prefix": "Het eerste deel van de topics: je customer site, bijvoorbeeld mysite in mysite/system."
+                    "topic_prefix": "De slug van de customer site: het eerste deel van de topics, bijvoorbeeld mysite in mysite/system."
                 }
             },
             "reconfigure": {
                 "title": "Verbinden met de MQTT-broker",
-                "description": "De verbinding wordt gecontroleerd door maximaal 30 seconden te wachten op een bericht onder de topic-prefix.",
+                "description": "De verbinding wordt gecontroleerd door maximaal 30 seconden te wachten op een bericht van de customer site.",
                 "data": {
                     "host": "Host",
                     "port": "Poort",
                     "username": "Gebruikersnaam",
                     "password": "Wachtwoord",
-                    "topic_prefix": "Topic-prefix"
+                    "topic_prefix": "Slug van de customer site"
                 },
                 "data_description": {
                     "host": "De MQTT-broker van Innergrid die de energiegegevens publiceert.",
                     "username": "Laat leeg als de broker geen inlog vereist.",
-                    "topic_prefix": "Het eerste deel van de topics: je customer site, bijvoorbeeld mysite in mysite/system."
+                    "topic_prefix": "De slug van de customer site: het eerste deel van de topics, bijvoorbeeld mysite in mysite/system."
                 }
             },
             "reauth_confirm": {
@@ -45,11 +45,11 @@
         "error": {
             "cannot_connect": "Verbinden met de MQTT-broker is mislukt.",
             "invalid_auth": "De MQTT-broker weigerde de gebruikersnaam of het wachtwoord.",
-            "no_messages": "Verbonden, maar binnen 30 seconden kwamen er geen berichten onder de topic-prefix binnen. Controleer de prefix.",
-            "invalid_topic_prefix": "Vul een topic-prefix in zonder de wildcards # en +."
+            "no_messages": "Verbonden, maar binnen 30 seconden kwamen er geen berichten van de customer site binnen. Controleer de slug.",
+            "invalid_topic_prefix": "Vul de slug van de customer site in, zonder de wildcards # en +."
         },
         "abort": {
-            "already_configured": "Deze broker en topic-prefix zijn al ingesteld.",
+            "already_configured": "Deze broker en customer site zijn al ingesteld.",
             "reconfigure_successful": "De instellingen zijn gewijzigd.",
             "reauth_successful": "De inlog is gewijzigd."
         }

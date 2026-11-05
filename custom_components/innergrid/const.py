@@ -16,6 +16,10 @@ RECONNECT_INTERVAL_MAX = 300
 # are published every 10 to 70 seconds, the Milesight sensors every 3 minutes.
 STALE_AFTER = timedelta(minutes=15)
 STALE_CHECK_INTERVAL = timedelta(minutes=1)
+# The platform's topics are retained, so all of them arrive right after
+# connecting. Restored data that is not confirmed within this time is of an
+# instance that was removed while Home Assistant was not connected.
+REMOVAL_GRACE = timedelta(minutes=2)
 
 # The latest data is stored, so entities show their last values after a
 # restart until new data arrives. It is saved at most this often, and when

@@ -60,10 +60,16 @@ work on a branch.
 
 ## Conventions
 
-- **Discovery**: the broker does not retain messages. Entities are added when
-  the first message of their topic arrives: `setup_discovery` calls the
+- **Discovery**: the platform's topics are retained (the Milesight sensors'
+  are not). Entities are added when the first message of their topic arrives: `setup_discovery` calls the
   platform's targets function for every update and adds targets it has not
   seen. A description's `exists_fn` decides whether the data has the value.
+- **Removals**: an empty message is a `Removal`; `hub.async_remove` drops the
+  data, `setup_discovery` removes the entities of the key (also disabled ones),
+  and devices without entities are removed. Restored data of the platform that
+  has not arrived `REMOVAL_GRACE` after connecting is removed the same way.
+- **Topic prefix**: the slug of the customer site; the config key stays
+  `topic_prefix`.
 - **Devices**: one device per meter, with its circuit's sensors (they are added
   once the meter is known). A Zaptec meter belongs to the charge point with the
   same name and waits until it is known. Meters wait for the site: the totals

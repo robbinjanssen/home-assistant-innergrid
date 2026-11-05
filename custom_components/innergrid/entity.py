@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
 from homeassistant.core import callback
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import Entity, EntityDescription
 
@@ -234,6 +235,8 @@ def setup_discovery(
 
     """
     added: set[str] = set()
+    # The unique IDs of the entities of each key, also of disabled entities.
+    by_key: dict[str, set[str]] = {}
 
     @callback
     def discover(key: str) -> None:
@@ -241,6 +244,7 @@ def setup_discovery(
         for target in targets_fn(hub, key):
             if (uid := unique_id(hub, target)) not in added:
                 added.add(uid)
+                by_key.setdefault(key, set()).add(uid)
                 entity = create_fn(target)
                 # A deleted device comes back with its next message.
                 entity.async_on_remove(functools.partial(added.discard, uid))
@@ -248,6 +252,24 @@ def setup_discovery(
         if new:
             add_entities(new)
 
+    @callback
+    def remove(key: str) -> None:
+        """Remove the entities of an instance that is gone."""
+        uids = by_key.pop(key, set())
+        added.difference_update(uids)
+        registry = er.async_get(hub.hass)
+        for entry in er.async_entries_for_config_entry(registry, hub.entry.entry_id):
+            if entry.unique_id in uids:
+                registry.async_remove(entry.entity_id)
+
     for key in list(hub.data):
         discover(key)
-    return hub.async_add_discovery_listener(discover)
+    stop_discovery = hub.async_add_discovery_listener(discover)
+    stop_removal = hub.async_add_removal_listener(remove)
+
+    @callback
+    def stop() -> None:
+        stop_discovery()
+        stop_removal()
+
+    return stop
