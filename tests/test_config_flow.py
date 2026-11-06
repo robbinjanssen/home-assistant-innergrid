@@ -192,24 +192,30 @@ API_INPUT = {
 }
 
 
+@pytest.mark.parametrize(
+    "api_url",
+    [
+        " http://edge.local:31679/hook/api/ ",
+        # The URL of the login endpoint, which the API documentation shows.
+        "http://edge.local:31679/hook/api/login",
+        "http://edge.local:31679/hook/api/login/",
+    ],
+)
 @pytest.mark.usefixtures("mock_wait_for_data")
-async def test_create_entry_with_api(hass: HomeAssistant) -> None:
-    """Test creating an entry with the REST API, which logs in."""
-    with (
-        patch("innergrid.InnergridApi.login", AsyncMock()) as login,
-        # The entry is set up right away, which fetches the space names.
-        patch("innergrid.InnergridApi.spaces", AsyncMock(return_value=[])),
-    ):
+async def test_create_entry_with_api(hass: HomeAssistant, api_url: str) -> None:
+    """Test creating an entry with the REST API, which fetches the spaces."""
+    # The flow fetches the spaces, and so does the setup of the entry.
+    with patch("innergrid.InnergridApi.spaces", AsyncMock(return_value=[])) as spaces:
         result = await hass.config_entries.flow.async_init(
             DOMAIN, context={"source": SOURCE_USER}
         )
         result = await hass.config_entries.flow.async_configure(
-            result["flow_id"], API_INPUT
+            result["flow_id"], {**API_INPUT, "api_url": api_url}
         )
         await hass.async_block_till_done()
     assert result["type"] is FlowResultType.CREATE_ENTRY
     assert result["data"]["api_url"] == "http://edge.local:31679/hook/api"
-    login.assert_awaited_once()
+    assert spaces.await_count == 2
 
 
 @pytest.mark.usefixtures("mock_wait_for_data")
@@ -242,7 +248,7 @@ async def test_api_errors(
     key: str,
 ) -> None:
     """Test that a REST API that cannot be used shows an error."""
-    with patch("innergrid.InnergridApi.login", AsyncMock(side_effect=error)):
+    with patch("innergrid.InnergridApi.spaces", AsyncMock(side_effect=error)):
         result = await hass.config_entries.flow.async_init(
             DOMAIN, context={"source": SOURCE_USER}
         )
