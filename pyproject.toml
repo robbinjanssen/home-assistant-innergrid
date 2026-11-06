@@ -25,7 +25,7 @@ package = false
 
 [tool.uv.sources]
 # Develop against the library's main branch, the manifest pins the release.
-innergrid = { path = "../python-innergrid", editable = true }
+innergrid = { git = "https://github.com/robbinjanssen/python-innergrid.git", branch = "main" }
 
 [tool.mypy]
 # Specify the target platform details in config, so your developers are

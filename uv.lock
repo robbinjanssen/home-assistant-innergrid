@@ -1342,7 +1342,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "innergrid", editable = "../python-innergrid" }]
+requires-dist = [{ name = "innergrid", git = "https://github.com/robbinjanssen/python-innergrid.git?branch=main" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -1481,33 +1481,10 @@ wheels = [
 [[package]]
 name = "innergrid"
 version = "0.0.0"
-source = { editable = "../python-innergrid" }
+source = { git = "https://github.com/robbinjanssen/python-innergrid.git?branch=main#b3701a5e136f5b5fef959f2802adbaa3ec98228d" }
 dependencies = [
     { name = "aiohttp" },
     { name = "aiomqtt" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "aiohttp", specifier = ">=3.9.0" },
-    { name = "aiomqtt", specifier = ">=2.0.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "aresponses", specifier = "==3.0.0" },
-    { name = "codespell", specifier = "==2.4.3" },
-    { name = "covdefaults", specifier = "==2.3.0" },
-    { name = "coverage", extras = ["toml"], specifier = "==7.16.2" },
-    { name = "freezegun", specifier = "==1.5.5" },
-    { name = "mypy", specifier = "==2.4.0" },
-    { name = "prek", specifier = "==0.5.5" },
-    { name = "pylint", specifier = "==4.1.2" },
-    { name = "pytest", specifier = "==9.1.1" },
-    { name = "pytest-asyncio", specifier = "==1.4.0" },
-    { name = "pytest-cov", specifier = "==7.1.0" },
-    { name = "ruff", specifier = "==0.16.10" },
-    { name = "yamllint", specifier = "==1.38.0" },
 ]
 
 [[package]]
