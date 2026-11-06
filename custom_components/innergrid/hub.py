@@ -108,6 +108,18 @@ def _restore(key: str, item: Any) -> tuple[Update, datetime] | None:
         return None
 
 
+def api_base_url(url: str) -> str:
+    """Return the base URL of the REST API.
+
+    Users tend to enter the URL of the login endpoint, which the API would
+    answer for every path below it; the client appends the paths itself.
+    """
+    url = url.strip().rstrip("/")
+    if url.endswith("/login"):
+        url = url.removesuffix("/login").rstrip("/")
+    return url
+
+
 def api_from_config_entry_data(
     hass: HomeAssistant, data: Mapping[str, Any]
 ) -> InnergridApi | None:
@@ -115,7 +127,7 @@ def api_from_config_entry_data(
     if not data.get(CONF_API_URL):
         return None
     return InnergridApi(
-        data[CONF_API_URL],
+        api_base_url(data[CONF_API_URL]),
         data[CONF_API_EMAIL],
         data[CONF_API_PASSWORD],
         session=async_get_clientsession(hass),

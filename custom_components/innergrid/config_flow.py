@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING, Any
 import probatio
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_HOST, CONF_PASSWORD, CONF_PORT, CONF_USERNAME
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import (
     NumberSelector,
     NumberSelectorConfig,
@@ -19,7 +18,6 @@ from homeassistant.helpers.selector import (
 
 from innergrid import (
     DEFAULT_PORT,
-    InnergridApi,
     InnergridAuthError,
     InnergridError,
     InnergridTimeoutError,
@@ -35,7 +33,11 @@ from .const import (
     INTEGRATION_NAME,
     VALIDATION_TIMEOUT,
 )
-from .hub import client_from_config_entry_data
+from .hub import (
+    api_base_url,
+    api_from_config_entry_data,
+    client_from_config_entry_data,
+)
 
 if TYPE_CHECKING:
     from collections.abc import Mapping
@@ -89,14 +91,17 @@ def _entry_data(user_input: Mapping[str, Any]) -> dict[str, Any]:
         if not str(data.get(key) or "").strip():
             data.pop(key, None)
     if CONF_API_URL in data:
-        data[CONF_API_URL] = data[CONF_API_URL].strip().rstrip("/")
+        data[CONF_API_URL] = api_base_url(data[CONF_API_URL])
     return data
 
 
 async def async_validate_api(
     hass: HomeAssistant, data: Mapping[str, Any]
 ) -> str | None:
-    """Log in to the REST API, when it is configured.
+    """Log in to the REST API and fetch the spaces, when it is configured.
+
+    Fetching the spaces checks the URL as well: a wrong path can still accept
+    the login, but rejects the requests after it.
 
     Returns
     -------
@@ -108,14 +113,11 @@ async def async_validate_api(
         return None
     if len(given) < len(API_KEYS):
         return "api_incomplete"
-    api = InnergridApi(
-        data[CONF_API_URL],
-        data[CONF_API_EMAIL],
-        data[CONF_API_PASSWORD],
-        session=async_get_clientsession(hass),
-    )
+    api = api_from_config_entry_data(hass, data)
+    if api is None:
+        return "api_incomplete"
     try:
-        await api.login()
+        await api.spaces()
     except InnergridAuthError:
         return "invalid_api_auth"
     except InnergridError:

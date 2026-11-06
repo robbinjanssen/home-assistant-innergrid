@@ -9,6 +9,8 @@ from homeassistant.exceptions import HomeAssistantError
 from innergrid import ChargeStrategy, InnergridConnectionError, SpaceInfo
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
+from custom_components.innergrid.hub import api_base_url
+
 from .conftest import DOMAIN, ENTRY_DATA, device, entity_id, send, state
 
 if TYPE_CHECKING:
@@ -209,3 +211,17 @@ async def test_session_of_unknown_charge_point(hass: HomeAssistant) -> None:
     entry = hass.config_entries.async_entries(DOMAIN)[0]
     entry.runtime_data.async_update_session("1", {"isClaimed": True})
     assert "chargepoint/1" not in entry.runtime_data.data
+
+
+@pytest.mark.parametrize(
+    "api_url",
+    [
+        "http://edge.local:31679/hook/api",
+        "http://edge.local:31679/hook/api/",
+        # Entries saved before the URL of the login endpoint was corrected.
+        "http://edge.local:31679/hook/api/login",
+    ],
+)
+def test_api_base_url(api_url: str) -> None:
+    """Test that the client gets the base URL of the API."""
+    assert api_base_url(api_url) == "http://edge.local:31679/hook/api"
