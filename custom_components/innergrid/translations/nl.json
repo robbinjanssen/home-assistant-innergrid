@@ -9,12 +9,17 @@
                     "port": "Poort",
                     "username": "Gebruikersnaam",
                     "password": "Wachtwoord",
-                    "topic_prefix": "Slug van de customer site"
+                    "topic_prefix": "Slug van de customer site",
+                    "api_url": "REST API-adres",
+                    "api_email": "E-mailadres REST API",
+                    "api_password": "Wachtwoord REST API"
                 },
                 "data_description": {
                     "host": "De MQTT-broker van Innergrid die de energiegegevens publiceert.",
                     "username": "Laat leeg als de broker geen inlog vereist.",
-                    "topic_prefix": "De slug van de customer site: het eerste deel van de topics, bijvoorbeeld mysite in mysite/system."
+                    "topic_prefix": "De slug van de customer site: het eerste deel van de topics, bijvoorbeeld mysite in mysite/system.",
+                    "api_url": "Optioneel: de REST API van de edge server, bijvoorbeeld http://192.0.2.10:31679/hook/api. Die voegt de namen van de ruimtes en het bedienen van de laders toe.",
+                    "api_email": "Een gebruiker van de edge server (Loqio WebApp)."
                 }
             },
             "reconfigure": {
@@ -25,12 +30,17 @@
                     "port": "Poort",
                     "username": "Gebruikersnaam",
                     "password": "Wachtwoord",
-                    "topic_prefix": "Slug van de customer site"
+                    "topic_prefix": "Slug van de customer site",
+                    "api_url": "REST API-adres",
+                    "api_email": "E-mailadres REST API",
+                    "api_password": "Wachtwoord REST API"
                 },
                 "data_description": {
                     "host": "De MQTT-broker van Innergrid die de energiegegevens publiceert.",
                     "username": "Laat leeg als de broker geen inlog vereist.",
-                    "topic_prefix": "De slug van de customer site: het eerste deel van de topics, bijvoorbeeld mysite in mysite/system."
+                    "topic_prefix": "De slug van de customer site: het eerste deel van de topics, bijvoorbeeld mysite in mysite/system.",
+                    "api_url": "Optioneel: de REST API van de edge server, bijvoorbeeld http://192.0.2.10:31679/hook/api. Die voegt de namen van de ruimtes en het bedienen van de laders toe.",
+                    "api_email": "Een gebruiker van de edge server (Loqio WebApp)."
                 }
             },
             "reauth_confirm": {
@@ -46,7 +56,10 @@
             "cannot_connect": "Verbinden met de MQTT-broker is mislukt.",
             "invalid_auth": "De MQTT-broker weigerde de gebruikersnaam of het wachtwoord.",
             "no_messages": "Verbonden, maar binnen 30 seconden kwamen er geen berichten van de customer site binnen. Controleer de slug.",
-            "invalid_topic_prefix": "Vul de slug van de customer site in, zonder de wildcards # en +."
+            "invalid_topic_prefix": "Vul de slug van de customer site in, zonder de wildcards # en +.",
+            "api_incomplete": "Vul het adres, e-mailadres en wachtwoord van de REST API in, of laat ze alle drie leeg.",
+            "invalid_api_auth": "De REST API weigerde het e-mailadres of wachtwoord.",
+            "cannot_connect_api": "Verbinden met de REST API is mislukt."
         },
         "abort": {
             "already_configured": "Deze broker en customer site zijn al ingesteld.",
@@ -217,7 +230,8 @@
                 "name": "Laadstrategie",
                 "state": {
                     "smart_charging": "Slim laden",
-                    "direct_charging": "Direct laden"
+                    "direct_charging": "Direct laden",
+                    "solar_charging": "Laden op zon"
                 }
             },
             "charging_power": {
@@ -502,6 +516,41 @@
             "warnings_phase": {
                 "name": "{phase} waarschuwingen"
             }
+        },
+        "select": {
+            "charge_strategy": {
+                "name": "Laadstrategie",
+                "state": {
+                    "smart_charging": "Slim laden",
+                    "direct_charging": "Direct laden",
+                    "solar_charging": "Laden op zon"
+                }
+            }
+        },
+        "number": {
+            "target_energy": {
+                "name": "Laaddoel"
+            }
+        },
+        "datetime": {
+            "departure": {
+                "name": "Vertrektijd"
+            }
+        },
+        "text": {
+            "user": {
+                "name": "Gebruiker"
+            }
+        },
+        "switch": {
+            "claimed": {
+                "name": "Geclaimd"
+            }
+        }
+    },
+    "exceptions": {
+        "api_error": {
+            "message": "De laadsessie kon niet worden gewijzigd: {error}"
         }
     }
 }

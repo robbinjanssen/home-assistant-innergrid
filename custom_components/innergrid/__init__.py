@@ -12,7 +12,16 @@ if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.device_registry import DeviceEntry
 
-PLATFORMS = [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.EVENT]
+PLATFORMS = [
+    Platform.SENSOR,
+    Platform.BINARY_SENSOR,
+    Platform.EVENT,
+    Platform.SELECT,
+    Platform.NUMBER,
+    Platform.DATETIME,
+    Platform.TEXT,
+    Platform.SWITCH,
+]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: InnergridConfigEntry) -> bool:
@@ -33,6 +42,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: InnergridConfigEntry) ->
     hub = InnergridHub(hass, entry)
     # Restored data adds the entities with their last values right away.
     await hub.async_load()
+    await hub.async_load_space_names()
     entry.runtime_data = hub
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     # Only after the platforms are up, so they see the first messages.

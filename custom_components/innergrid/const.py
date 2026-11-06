@@ -6,6 +6,11 @@ DOMAIN = "innergrid"
 INTEGRATION_NAME = "Innergrid"
 
 CONF_TOPIC_PREFIX = "topic_prefix"
+# The REST API of the edge server, optional: it adds the names of the spaces
+# and the control of the charge points.
+CONF_API_URL = "api_url"
+CONF_API_EMAIL = "api_email"
+CONF_API_PASSWORD = "api_password"  # noqa: S105
 
 # The config flow waits this long for a first message to check the prefix.
 VALIDATION_TIMEOUT = 30

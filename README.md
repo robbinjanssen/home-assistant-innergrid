@@ -33,11 +33,16 @@ Add the integration on the integrations page and enter:
 | Port | The port of the broker, for example `1883`. |
 | Username, password | Only if the broker requires a login. |
 | Customer site slug | The slug of the customer site: the first part of its topics, for example `mysite`. |
+| REST API URL, e-mail address, password | Optional: the REST API of the edge server, for example `http://192.0.2.10:31679/hook/api`, and a user of the edge server (Loqio WebApp). |
 
 The integration connects to the broker itself, next to Home Assistant's own
 MQTT integration, and checks the settings by waiting up to 30 seconds for a
 message of the customer site. To change the settings later, choose
 **Reconfigure** in the integration's menu.
+
+With the REST API, the spaces get their names from the edge server, and the
+chargers can be controlled (see below). Without it, everything else works the
+same.
 
 ## Devices and entities
 
@@ -79,6 +84,24 @@ Notes:
 - Production power is negative, as the meters measure it.
 - The user of a charge point is only shown while a vehicle is connected.
   Diagnostics redact the names of people.
+
+## Controlling the chargers
+
+With the REST API configured, every charger has these controls, which change
+its charging session on the edge server:
+
+| Entity | Changes |
+| --- | --- |
+| Charge strategy (select) | Smart charging, direct charging or solar charging |
+| Charging target (number) | The energy to charge in the session, in kWh |
+| Departure (date and time) | The planned departure time |
+| User (text) | The user of the session |
+| Claimed (switch) | Whether a user claimed the session |
+
+The new value is shown right away, and confirmed when the platform publishes
+the charger again. Everyone who can use these entities in Home Assistant can
+change the charging session of anyone's car; put them on a dashboard for the
+people who should.
 
 ## Charging session events
 

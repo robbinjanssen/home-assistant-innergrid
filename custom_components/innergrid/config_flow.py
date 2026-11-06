@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Any
 import probatio
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_HOST, CONF_PASSWORD, CONF_PORT, CONF_USERNAME
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import (
     NumberSelector,
     NumberSelectorConfig,
@@ -18,17 +19,28 @@ from homeassistant.helpers.selector import (
 
 from innergrid import (
     DEFAULT_PORT,
+    InnergridApi,
     InnergridAuthError,
     InnergridError,
     InnergridTimeoutError,
     valid_topic_prefix,
 )
 
-from .const import CONF_TOPIC_PREFIX, DOMAIN, INTEGRATION_NAME, VALIDATION_TIMEOUT
+from .const import (
+    CONF_API_EMAIL,
+    CONF_API_PASSWORD,
+    CONF_API_URL,
+    CONF_TOPIC_PREFIX,
+    DOMAIN,
+    INTEGRATION_NAME,
+    VALIDATION_TIMEOUT,
+)
 from .hub import client_from_config_entry_data
 
 if TYPE_CHECKING:
     from collections.abc import Mapping
+
+    from homeassistant.core import HomeAssistant
 
 REAUTH_SCHEMA = probatio.Schema(
     {
@@ -50,8 +62,19 @@ STEP_SCHEMA = probatio.Schema(
             TextSelectorConfig(type=TextSelectorType.PASSWORD)
         ),
         probatio.Required(CONF_TOPIC_PREFIX): str,
+        probatio.Optional(CONF_API_URL): TextSelector(
+            TextSelectorConfig(type=TextSelectorType.URL)
+        ),
+        probatio.Optional(CONF_API_EMAIL): TextSelector(
+            TextSelectorConfig(type=TextSelectorType.EMAIL)
+        ),
+        probatio.Optional(CONF_API_PASSWORD): TextSelector(
+            TextSelectorConfig(type=TextSelectorType.PASSWORD)
+        ),
     }
 )
+
+API_KEYS = (CONF_API_URL, CONF_API_EMAIL, CONF_API_PASSWORD)
 
 # The keys that distinguish one source of data from another.
 SOURCE_KEYS = (CONF_HOST, CONF_PORT, CONF_TOPIC_PREFIX)
@@ -62,7 +85,42 @@ def _entry_data(user_input: Mapping[str, Any]) -> dict[str, Any]:
     data = dict(user_input)
     data[CONF_PORT] = int(data[CONF_PORT])
     data[CONF_TOPIC_PREFIX] = data[CONF_TOPIC_PREFIX].strip().strip("/")
+    for key in API_KEYS:
+        if not str(data.get(key) or "").strip():
+            data.pop(key, None)
+    if CONF_API_URL in data:
+        data[CONF_API_URL] = data[CONF_API_URL].strip().rstrip("/")
     return data
+
+
+async def async_validate_api(
+    hass: HomeAssistant, data: Mapping[str, Any]
+) -> str | None:
+    """Log in to the REST API, when it is configured.
+
+    Returns
+    -------
+        None if there is no API or the login succeeded, otherwise the error key.
+
+    """
+    given = [key for key in API_KEYS if key in data]
+    if not given:
+        return None
+    if len(given) < len(API_KEYS):
+        return "api_incomplete"
+    api = InnergridApi(
+        data[CONF_API_URL],
+        data[CONF_API_EMAIL],
+        data[CONF_API_PASSWORD],
+        session=async_get_clientsession(hass),
+    )
+    try:
+        await api.login()
+    except InnergridAuthError:
+        return "invalid_api_auth"
+    except InnergridError:
+        return "cannot_connect_api"
+    return None
 
 
 async def async_validate_connection(data: Mapping[str, Any]) -> str | None:
@@ -114,7 +172,10 @@ class InnergridFlowHandler(ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             data = _entry_data(user_input)
             self._async_abort_entries_match({k: data[k] for k in SOURCE_KEYS})
-            if (error := await async_validate_connection(data)) is None:
+            error = await async_validate_connection(data) or await async_validate_api(
+                self.hass, data
+            )
+            if error is None:
                 return self.async_create_entry(title=_title(data), data=data)
             errors["base"] = error
 
@@ -148,7 +209,10 @@ class InnergridFlowHandler(ConfigFlow, domain=DOMAIN):
                     k: other.data.get(k) for k in SOURCE_KEYS
                 }:
                     return self.async_abort(reason="already_configured")
-            if (error := await async_validate_connection(data)) is None:
+            error = await async_validate_connection(data) or await async_validate_api(
+                self.hass, data
+            )
+            if error is None:
                 return self.async_update_reload_and_abort(
                     entry, title=_title(data), data=data
                 )

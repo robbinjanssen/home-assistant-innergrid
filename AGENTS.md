@@ -25,6 +25,10 @@ custom_components/innergrid/
   entity.py        devices, the base entity, EntityTarget and setup_discovery
   sensor.py        sensor descriptions per Kind; meter sensors from the units
   binary_sensor.py binary sensor descriptions per Kind
+  control.py       base of the charge point controls: send via the REST API,
+                   show the new session values right away
+  select.py, number.py, datetime.py, text.py, switch.py
+                   the charge point controls (only with the REST API)
   event.py         a session event per charge point, fired by the charge
                    point's events topic (events are not stored)
   diagnostics.py   redacts the login and the names of people charging
@@ -88,6 +92,10 @@ work on a branch.
   `test_translations` checks that every translation key exists.
 - **Reloading**: use `async_update_reload_and_abort`; do not add a config entry
   update listener next to it.
+- **REST API**: optional (`api_url`, `api_email`, `api_password`). The hub
+  fetches the space names on setup (a failure is only logged) and the controls
+  change charge point sessions; `hub.async_update_session` shows a change until
+  the platform publishes the charge point again. Tests mock `InnergridApi`.
 - **Privacy**: the names of people charging are only shown while a vehicle is
   connected. Diagnostics redact them, including the energy manager's charge
   point resources, which are named like "Lader 10 (Bob)". Never commit real names in

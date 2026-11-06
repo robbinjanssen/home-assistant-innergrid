@@ -129,8 +129,14 @@ def energy_manager_device(manager: EnergyManager) -> InnergridDevice:
     return InnergridDevice(identifier=f"energymanager_{manager.id}", name=manager.name)
 
 
-def space_device(space_id: str) -> InnergridDevice:
-    """Return the device of a space; the payload does not include a name."""
+def space_device(space_id: str, name: str | None = None) -> InnergridDevice:
+    """Return the device of a space.
+
+    The payload does not include a name; it comes from the REST API, or the
+    space is named by its ID.
+    """
+    if name:
+        return InnergridDevice(identifier=f"space_{space_id}", name=name)
     return InnergridDevice(
         identifier=f"space_{space_id}",
         translation_key="space",
@@ -199,7 +205,7 @@ class InnergridEntity(Entity):
         return self.hub.is_available(self.data_key)
 
     @property
-    def value(self) -> Any:
+    def data_value(self) -> Any:
         """Return the value from the latest data."""
         if (update := self.hub.data.get(self.data_key)) is None:
             return None

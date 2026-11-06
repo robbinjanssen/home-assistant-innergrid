@@ -10,20 +10,26 @@ from homeassistant.const import CONF_HOST, CONF_PASSWORD, CONF_PORT, CONF_USERNA
 from homeassistant.core import callback
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers import entity_registry as er
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.event import async_call_later, async_track_time_interval
 from homeassistant.helpers.storage import Store
 from homeassistant.util import dt as dt_util
 
 from innergrid import (
     Innergrid,
+    InnergridApi,
     InnergridAuthError,
     InnergridConnectionError,
+    InnergridError,
     Kind,
     Removal,
     parse_data,
 )
 
 from .const import (
+    CONF_API_EMAIL,
+    CONF_API_PASSWORD,
+    CONF_API_URL,
     CONF_TOPIC_PREFIX,
     DOMAIN,
     RECONNECT_INTERVAL,
@@ -102,6 +108,20 @@ def _restore(key: str, item: Any) -> tuple[Update, datetime] | None:
         return None
 
 
+def api_from_config_entry_data(
+    hass: HomeAssistant, data: Mapping[str, Any]
+) -> InnergridApi | None:
+    """Create the REST API client from config entry data, if it has one."""
+    if not data.get(CONF_API_URL):
+        return None
+    return InnergridApi(
+        data[CONF_API_URL],
+        data[CONF_API_EMAIL],
+        data[CONF_API_PASSWORD],
+        session=async_get_clientsession(hass),
+    )
+
+
 class InnergridHub:
     """Keep the latest data of each topic and notify the entities about it."""
 
@@ -117,6 +137,9 @@ class InnergridHub:
         self.hass = hass
         self.entry = entry
         self.client = client_from_config_entry_data(entry.data)
+        self.api = api_from_config_entry_data(hass, entry.data)
+        # The names of the spaces from the REST API, by space ID.
+        self.space_names: dict[str, str] = {}
         self.prefix = self.client.topic_prefix
         self.connected = False
         # The latest update of each topic, by key ("<kind>/<id>"), and by kind.
@@ -134,6 +157,38 @@ class InnergridHub:
         self._discovery_listeners: list[Callable[[str], None]] = []
         self._removal_listeners: list[Callable[[str], None]] = []
         self._cancel_removal_check: Callable[[], None] | None = None
+
+    async def async_load_space_names(self) -> None:
+        """Fetch the names of the spaces from the REST API, when there is one.
+
+        The names are optional: without them the spaces are named by ID.
+        """
+        if self.api is None:
+            return
+        try:
+            spaces = await self.api.spaces()
+        except InnergridError as err:
+            _LOGGER.warning("Could not fetch the names of the spaces: %s", err)
+            return
+        self.space_names = {space.id: space.name for space in spaces}
+
+    @callback
+    def async_update_session(
+        self, charge_point_id: str, session: dict[str, Any]
+    ) -> None:
+        """Apply a change of a charge point session right away.
+
+        The platform publishes the charge point again after the change; until
+        then the entities show the new values.
+        """
+        key = f"{Kind.CHARGE_POINT}/{charge_point_id}"
+        if (update := self.data.get(key)) is None:
+            return
+        raw = {
+            **update.raw,
+            "session": {**(update.raw.get("session") or {}), **session},
+        }
+        self.async_handle_update(parse_data(Kind.CHARGE_POINT, charge_point_id, raw))
 
     async def async_load(self) -> None:
         """Restore the latest data of the last run.
